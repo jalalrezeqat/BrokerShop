@@ -30,7 +30,7 @@
                     <div class="product-description">
                       <div class="body-area">
                       <div class="gocover" style="background: url({{asset('assets/images/'.$gs->admin_loader)}}) no-repeat scroll center center rgba(45, 45, 45, 0.5);"></div>
-                      <form id="Bshopform" action="{{route('admin-lang-update',$data->id)}}" method="POST" enctype="multipart/form-data">
+                      <form id="geniusform" action="{{route('admin-lang-update',$data->id)}}" method="POST" enctype="multipart/form-data">
                         {{csrf_field()}}
                       @include('includes.admin.form-both')  
                         <div class="row">
@@ -529,6 +529,18 @@
                           </div>
                           <div class="col-lg-7">
                             <input type="text" class="input-field" name="lang236" placeholder="Brands" required="" value="{{ $lang->lang236 }}">
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">Shops *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" placeholder="Shops" name="lang900" value="{{ $lang->lang900 }}" required="">
                           </div>
                         </div>
 
@@ -3858,6 +3870,8 @@
                                                       <input type="text" class="input-field" placeholder="Back Home" name="lang430" value="{{ $lang->lang430 }}" required="">
                                                     </div>
                                                   </div>
+
+                                                  
 
 
 
@@ -10786,3 +10800,4 @@
               </div>
             </div>
 @endsection
+
