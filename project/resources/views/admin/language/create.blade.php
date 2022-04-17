@@ -34,7 +34,7 @@
             <div class="gocover"
               style="background: url({{asset('assets/images/'.$gs->admin_loader)}}) no-repeat scroll center center rgba(45, 45, 45, 0.5);">
             </div>
-            <form id="Bshopform" action="{{route('admin-lang-create')}}" method="POST" enctype="multipart/form-data">
+            <form id="geniusform" action="{{route('admin-lang-create')}}" method="POST" enctype="multipart/form-data">
               {{csrf_field()}}
               @include('includes.admin.form-both')
 
@@ -373,6 +373,8 @@
                         </div>
                       </div>
 
+                      
+
                       <div class="row">
                         <div class="col-lg-4">
                           <div class="left-area">
@@ -579,6 +581,19 @@
                         </div>
                       </div>
 
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <div class="left-area">
+                            <h4 class="heading">Shops *</h4>
+                            <p class="sub-heading">(In Any Language)</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <input type="text" class="input-field" name="lang900" placeholder="Shops" required=""
+                            value="Shops">
+                        </div>
+                      </div>
+                      
                       <hr>
 
                       <h4 class="text-center">BLOG</h4>
@@ -11574,6 +11589,7 @@
 
 
 
+                   
 
 
 
@@ -11605,3 +11621,5 @@
   </div>
 </div>
 @endsection
+
+
