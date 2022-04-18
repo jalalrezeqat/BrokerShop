@@ -11,7 +11,7 @@ use App\Models\Verification;
 use Auth;
 use Illuminate\Http\Request;
 use DB;
-
+use App\Models\Subscription;
 use Session;
 use Validator;
 
@@ -130,6 +130,18 @@ class VendorController extends Controller
     {
         $data = Auth::user();  
         return view('vendor.banner',compact('data'));
+    }
+    public function slider()
+    {
+        $data = Auth::user();  
+        return view('vendor.slider',compact('data'));
+    }
+    public function payslider()
+    {
+        $user = Auth::user();
+        $subs = Subscription::all();
+        $package = $user->subscribes()->where('status',1)->orderBy('id','desc')->first();
+        return view('vendor.payslider');
     }
 
     //*** GET Request

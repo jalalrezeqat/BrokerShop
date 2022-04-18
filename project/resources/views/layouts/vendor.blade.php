@@ -191,6 +191,9 @@
                                     <li>
                                     	<a href="{{ route('vendor-banner') }}"><span>{{ $langg->lang454 }}</span></a>
                                     </li>
+									<li>
+                                    	<a href="{{ route('vendor-slider') }}"><span>{{ __('Sliders') }}</span></a>
+                                    </li>
                                     @if($gs->vendor_ship_info == 1)
 	                                    <li>
 	                                    	<a href="{{ route('vendor-shipping-index') }}"><span>{{ $langg->lang719 }}</span></a>
