@@ -262,22 +262,22 @@
             <li>
                 <a href="{{ route('admin-package-index') }}"><span>{{ __('Packagings') }}</span></a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-pick-index') }}"><span>{{ __('Pickup Locations') }}</span></a>
-            </li>
+            </li> --}}
             <li>
             <a href="{{ route('admin-gs-contents') }}"><span>{{ __('Website Contents') }}</span></a>
             </li>
             <li>
                 <a href="{{ route('admin-gs-footer') }}"><span>{{ __('Footer') }}</span></a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-gs-affilate') }}"><span>{{__('Affiliate Information')}}</span></a>
-            </li>
+            </li> --}}
 
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-gs-popup') }}"><span>{{ __('Popup Banner') }}</span></a>
-            </li>
+            </li> --}}
 
 
             <li>

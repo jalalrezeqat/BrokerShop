@@ -367,7 +367,7 @@
 
 	@if($ps->partners == 1)
 		<!-- Partners Area Start -->
-		<section class="partners">
+		{{-- <section class="partners">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -392,7 +392,7 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> --}}
 		<!-- Partners Area Start -->
 	@endif
 

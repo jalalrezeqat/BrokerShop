@@ -944,6 +944,7 @@ Route::prefix('user')->group(function() {
 // User Subscription
 
   Route::get('/package', 'User\UserController@package')->name('user-package');
+
   Route::get('/subscription/{id}', 'User\UserController@vendorrequest')->name('user-vendor-request');
   Route::post('/vendor-request', 'User\UserController@vendorrequestsub')->name('user-vendor-request-submit');
 
@@ -1179,6 +1180,10 @@ Route::get('/package/delete/{id}', 'Vendor\PackageController@destroy')->name('ve
 
   // Vendor Shipping Cost
   Route::get('/banner', 'Vendor\VendorController@banner')->name('vendor-banner');
+  Route::get('/slidervendor', 'Vendor\VendorController@slider')->name('vendor-slider');
+  Route::get('/packageslider', 'Vendor\VendorController@payslider')->name('vendor-payslider');
+
+
 
   // Vendor Social
   Route::get('/social', 'Vendor\VendorController@social')->name('vendor-social-index');
