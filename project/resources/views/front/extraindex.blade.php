@@ -36,7 +36,7 @@
 		<!-- Phone and Accessories Area start-->
 	@endif
 
-	@if($ps->flash_deal == 1)
+	{{-- @if($ps->flash_deal == 1)
 		<!-- Electronics Area Start -->
 		<section class="categori-item electronics-section">
 			<div class="container">
@@ -64,9 +64,9 @@
 			</div>
 		</section>
 		<!-- Electronics Area start-->
-	@endif
+	@endif --}}
 
-	@if($ps->large_banner == 1)
+	{{-- @if($ps->large_banner == 1)
 		<!-- Banner Area One Start -->
 		<section class="banner-section">
 			<div class="container">
@@ -86,7 +86,7 @@
 			</div>
 		</section>
 		<!-- Banner Area One Start -->
-	@endif
+	@endif --}}
 
 	@if($ps->top_rated == 1)
 		<!-- Electronics Area Start -->
