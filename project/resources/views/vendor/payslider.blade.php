@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <p class="value">
-                                            {{-- {{$subs ?? ''->title}} --}}
+                                            اساسي
                                         </p>
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <p class="value">
-                                            {{-- {{$subs ?? ''->price}}{{$subs ?? ''->currency}} --}}
+                                           10$
                                         </p>
                                     </div>
                                 </div>
@@ -47,36 +47,36 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <p class="value">
-                                            {{-- {{$subs ?? ''->days}} {{ $langg->lang403 }} --}}
+                                           10 {{ $langg->lang403 }} 
                                     </p></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <h5 class="title">
-                                            {{ $langg->lang414 }}
+                                            {{__('Sliders') }}
                                         </h5>
                                     </div>
                                     <div class="col-lg-8">
                                         <p class="value">
-                                            {{-- {{ $subs ?? ''->allowed_products == 0 ? 'Unlimited':  $subs ?? ''->allowed_products}} --}}
+                                            1   {{__('Sliders') }}
                                         </p>
                                     </div>
                                 </div>
 
                                         
                                             {{-- @if($package->subscription_id != $subs ?? ''->id) --}}
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="col-lg-4">
                                     </div>
                                     <div class="col-lg-8">
                                         <span class="notic"><b>{{ $langg->lang415 }}</b> {{ $langg->lang416 }}</span>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <br>
                                          
 
-                                        <form id="subscribe-form" class="pay-form" action="{{route('user-vendor-request-submit')}}" method="POST">
+                                        <form id="subscribe-form" class="pay-form" action="{{route('vendor-request-submit')}}" method="POST">
 
                             @include('includes.form-success')
                             @include('includes.form-error')

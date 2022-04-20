@@ -1,7 +1,10 @@
 <?php
 
 // ************************************ ADMIN SECTION **********************************************
-
+Route::get('/clear-cache', function() {
+  Artisan::call('cache:clear');
+  return "Cache is cleared";
+});
 Route::prefix('admin')->group(function() {
 
   //------------ ADMIN LOGIN SECTION ------------
@@ -1182,6 +1185,7 @@ Route::get('/package/delete/{id}', 'Vendor\PackageController@destroy')->name('ve
   Route::get('/banner', 'Vendor\VendorController@banner')->name('vendor-banner');
   Route::get('/slidervendor', 'Vendor\VendorController@slider')->name('vendor-slider');
   Route::get('/packageslider', 'Vendor\VendorController@payslider')->name('vendor-payslider');
+  Route::post('/vendor-request', 'Vendor\VendorController@vendorslidsub')->name('user-vendor-request-submit');
 
 
 
@@ -1371,6 +1375,7 @@ Route::get('/package/delete/{id}', 'Vendor\PackageController@destroy')->name('ve
   // PAGE SECTION ENDS
 
 // ************************************ FRONT SECTION ENDS**********************************************
+
 
 
 

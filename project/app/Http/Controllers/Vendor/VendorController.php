@@ -143,7 +143,44 @@ class VendorController extends Controller
         $package = $user->subscribes()->where('status',1)->orderBy('id','desc')->first();
         return view('vendor.payslider');
     }
+    public function vendorslidsub(Request $request)
+    {
+        $this->validate($request, [
+            'shop_name'   => 'unique:users',
+           ],[ 
+               'shop_name.unique' => 'This shop name has already been taken.'
+            ]);
+        $user = Auth::user();
+        $settings = Generalsetting::findOrFail(1);
+                    $today = Carbon::now()->format('Y-m-d');
+                    $input = $request->all();  
+                    $user->is_vendor = 2;
+                    $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
+                    $user->mail_sent = 1;     
+                    $user->update($input);
+                    if($settings->is_smtp == 1)
+                    {
+                    $data = [
+                        'to' => $user->email,
+                        'type' => "vendor_accept",
+                        'cname' => $user->name,
+                        'oamount' => "",
+                        'aname' => "",
+                        'aemail' => "",
+                        'onumber' => "",
+                    ];    
+                    $mailer = new BshopMailer();
+                    $mailer->sendAutoMail($data);        
+                    }
+                    else
+                    {
+                    $headers = "From: ".$settings->from_name."<".$settings->from_email.">";
+                    mail($user->email,'Your Vendor Account Activated','Your Vendor Account Activated Successfully. Please Login to your account and build your own shop.',$headers);
+                    }
 
+                    return redirect()->route('/')->with('success','Vendor Account Activated Successfully');
+
+    }
     //*** GET Request
     public function social()
     {
