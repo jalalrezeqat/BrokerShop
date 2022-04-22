@@ -137,7 +137,7 @@ class FrontendController extends Controller
        $sliders = DB::table('sliders')->get();
        $top_small_banners = DB::table('banners')->where('type','=','TopSmall')->get();
        $ps = DB::table('pagesettings')->find(1);
-       $shops = DB::table('users')->where('shop_name','!=','empty')->get();
+       $shops = DB::table('users')->where('is_vendor','=','2')->get();
        $feature_products =  Product::with('user')->where('featured','=',1)->where('status','=',1)->select($selectable)->orderBy('id','desc')->take(8)->get()->reject(function($item){
        
 

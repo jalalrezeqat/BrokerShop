@@ -52,12 +52,47 @@
        </section>
        <!-- Hero Area End -->
    @endif
- 
+   <div>
+    <section  class="trending">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 remove-padding">
+                    <div class="section-top">
+                        <h2 class="section-title">
+                            {{ $langg->lang900 }}
+                        </h2>
+                    </div>         
+                </div>         
+            </div>
+            <div class="row">
+                <div class="col-lg-12 remove-padding">
+                    <div class="trending-item-slider">
+                            @foreach ($shops as $shop)
+                            <div class="card" style="max-width: 100%;height: auto;  margin:2px;">
+                                <img class="img-fluid card-img-top " style="height:250px ;" src="{{$shop->photo ? asset('assets/images/users/'.$shop->photo):asset('assets/images/noimage.png') }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{$shop->shop_name}}</h5>
+                                  <a href="{{route('front.vendor',str_replace(' ', '-',$shop->shop_name))}}" class="sell-btn" style="color:white">{{ $langg->lang249 }}</a>
+                                </div>
+                              </div>
+                            {{-- <a href="{{route('front.vendor',str_replace(' ', '-',$shop->shop_name))}}">{{$shop->shop_name}}</a>
+                            <img src="{{asset('assets/images/users/'.$shop->photo) }}" alt=""> --}}
+                            @endforeach
+
+                           
+                    </div>
+                </div>         
+            </div>     
+        </div>                 
+           
+    </section> 
+</div>
+
   
-   @if($ps->featured_category == 1)
+   {{-- @if($ps->featured_category == 1) --}}
  
    {{-- Slider buttom Category Start --}}
-   <section class="slider-buttom-category d-none d-md-block">
+   {{-- <section class="slider-buttom-category d-none d-md-block">
        <div class="container-fluid">
            <div class="row">
                @foreach($categories->where('is_featured','=',1) as $cat)
@@ -79,10 +114,10 @@
                @endforeach
            </div>
        </div>
-   </section>
+   </section> --}}
    {{-- Slider buttom banner End --}}
  
-   @endif
+   {{-- @endif --}}
  
    @if($ps->featured == 1)
        <!-- Trending Item Area Start -->
@@ -142,42 +177,7 @@
        </div>
    </section>
  
-   <div>
-       <section  class="trending">
-           <div class="container">
-               <div class="row">
-                   <div class="col-lg-12 remove-padding">
-                       <div class="section-top">
-                           <h2 class="section-title">
-                               {{ $langg->lang900 }}
-                           </h2>
-                       </div>         
-                   </div>         
-               </div>
-               <div class="row">
-                   <div class="col-lg-12 remove-padding">
-                       <div class="trending-item-slider">
-                               @foreach ($shops as $shop)
-                               <div class="card" style="max-width: 100%;height: auto;  margin:2px;">
-                                   <img class="img-fluid card-img-top " style="height:250px ;" src="{{$shop->photo ? asset('assets/images/users/'.$shop->photo):asset('assets/images/noimage.png') }}" class="card-img-top" alt="...">
-                                   <div class="card-body">
-                                     <h5 class="card-title">{{$shop->shop_name}}</h5>
-                                     <a href="{{route('front.vendor',str_replace(' ', '-',$shop->shop_name))}}" class="sell-btn" style="color:white">{{ $langg->lang249 }}</a>
-                                   </div>
-                                 </div>
-                               {{-- <a href="{{route('front.vendor',str_replace(' ', '-',$shop->shop_name))}}">{{$shop->shop_name}}</a>
-                               <img src="{{asset('assets/images/users/'.$shop->photo) }}" alt=""> --}}
-                               @endforeach
- 
-                              
-                       </div>
-                   </div>         
-               </div>     
-           </div>                 
-              
-       </section> 
-   </div>
- 
+   
   
   
  

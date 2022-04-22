@@ -374,12 +374,12 @@
 							@if (DB::table('pagesettings')->find(1)->review_blog==1)
 								<li class="active" ><a  href="{{ route('front.blog') }}">{{ $langg->lang18 }}</a></li>
 							@endif
-							@if($gs->is_faq == 1)
+							{{-- @if($gs->is_faq == 1)
 							<li><a href="{{ route('front.faq') }}">{{ $langg->lang19 }}</a></li>
-							@endif
-							@foreach(DB::table('pages')->where('header','=',1)->get() as $data)
+							@endif --}}
+							{{-- @foreach(DB::table('pages')->where('header','=',1)->get() as $data)
 								<li><a href="{{ route('front.page',$data->slug) }}">{{ $data->title }}</a></li>
-							@endforeach
+							@endforeach --}}
 							@if($gs->is_contact == 1)
 							<li><a href="{{ route('front.contact') }}">{{ $langg->lang20 }}</a></li>
 							@endif
@@ -488,7 +488,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-md-6 col-lg-4">
+				{{-- <div class="col-md-6 col-lg-4">
 					<div class="footer-widget recent-post-widget">
 						<h4 class="title">
 							{{ $langg->lang24 }}
@@ -516,7 +516,7 @@
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div> --}}
 		</div>
 
 		<div class="copy-bg">
