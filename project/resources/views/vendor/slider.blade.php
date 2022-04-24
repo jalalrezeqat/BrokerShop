@@ -34,7 +34,7 @@
 											 
 
 				
-											<form id="Bshopform" action="{{route('admin-sl-create')}}" method="POST" enctype="multipart/form-data">
+											<form id="Bshopform" action="{{route('vendor-slider-store')}}" method="POST" enctype="multipart/form-data">
 												{{csrf_field()}}
 											  @include('includes.admin.form-both') 
 						
@@ -261,6 +261,7 @@
 													  
 													</div>
 												  </div>
+												  
 												  <div class="col-lg-7">
 													<button class="addProductSubmit-btn" type="submit">{{ __('Create Slider') }}</button>
 												  </div>
@@ -275,4 +276,7 @@
 							</div>
 						</div>
 
+
+
+						
 @endsection

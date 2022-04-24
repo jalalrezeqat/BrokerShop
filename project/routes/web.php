@@ -255,6 +255,15 @@ Route::prefix('admin')->group(function() {
   Route::get('/subscription/edit/{id}', 'Admin\SubscriptionController@edit')->name('admin-subscription-edit');
   Route::post('/subscription/edit/{id}', 'Admin\SubscriptionController@update')->name('admin-subscription-update');
   Route::get('/subscription/delete/{id}', 'Admin\SubscriptionController@destroy')->name('admin-subscription-delete');
+  //
+  Route::get('/subscriptionslider/datatables', 'Admin\SubscriptionSliderController@datatables')->name('admin-subscriptionslider-datatables');
+  Route::get('/subscriptionslider', 'Admin\SubscriptionSliderController@index')->name('admin-subscriptionslider-index');
+  Route::get('/subscriptionslider/create', 'Admin\SubscriptionSliderController@create')->name('admin-subscriptionslider-create');
+  Route::post('/subscriptionslider/create', 'Admin\SubscriptionSliderController@store')->name('admin-subscriptionslider-store');
+  Route::get('/subscriptionslider/edit/{id}', 'Admin\SubscriptionSliderController@edit')->name('admin-subscriptionslider-edit');
+  Route::post('/subscriptionslider/edit/{id}', 'Admin\SubscriptionSliderController@update')->name('admin-subscriptionslider-update');
+  Route::get('/subscriptionslider/delete/{id}', 'Admin\SubscriptionSliderController@destroy')->name('admin-subscriptionslider-delete');
+
 
   Route::get('/vendors/subs/datatables', 'Admin\VendorController@subsdatatables')->name('admin-vendor-subs-datatables');
   Route::get('/vendors/subs', 'Admin\VendorController@subs')->name('admin-vendor-subs');
@@ -947,6 +956,15 @@ Route::prefix('user')->group(function() {
 // User Subscription
 
   Route::get('/package', 'User\UserController@package')->name('user-package');
+  Route::get('/packageslider', 'Vendor\VendorController@packageslider')->name('vendor.detailsslider');
+
+  Route::get('/subscriptionsliderpay/{id}', 'Vendor\VendorController@vendorrequestslider')->name('user-vendorpay-request');
+  Route::post('/sliderpay-request', 'Vendor\VendorController@vendorrequestslid')->name('user-vendorsliderpay-request-submit');
+  Route::post('/stripeslid/submit', 'User\StripeController@storeslid')->name('user.stripeslide.submit');
+  Route::post('/slider/createvendor', 'Vendor\VendorController@storslide')->name('vendor-slider-store');
+
+
+
 
   Route::get('/subscription/{id}', 'User\UserController@vendorrequest')->name('user-vendor-request');
   Route::post('/vendor-request', 'User\UserController@vendorrequestsub')->name('user-vendor-request-submit');
@@ -1184,7 +1202,7 @@ Route::get('/package/delete/{id}', 'Vendor\PackageController@destroy')->name('ve
   // Vendor Shipping Cost
   Route::get('/banner', 'Vendor\VendorController@banner')->name('vendor-banner');
   Route::get('/slidervendor', 'Vendor\VendorController@slider')->name('vendor-slider');
-  Route::get('/packageslider', 'Vendor\VendorController@payslider')->name('vendor-payslider');
+  Route::get('/payslider', 'Vendor\VendorController@payslider')->name('vendor-payslider');
   Route::post('/vendor-request', 'Vendor\VendorController@vendorslidsub')->name('user-vendor-request-submit');
 
 

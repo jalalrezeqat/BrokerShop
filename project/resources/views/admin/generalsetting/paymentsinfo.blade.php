@@ -153,7 +153,7 @@
 
 <hr>
 
-                        <div class="row justify-content-center">
+                        {{-- <div class="row justify-content-center">
                             <div class="col-lg-3">
                               <div class="left-area">
                                 <h4 class="heading">
@@ -517,7 +517,7 @@
                                     </select>
                                   </div>
                             </div>
-                          </div>
+                          </div> --}}
 
                         <div class="row justify-content-center">
                             <div class="col-lg-3">

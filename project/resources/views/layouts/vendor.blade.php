@@ -194,7 +194,7 @@
 									<li>
                                     	<a href="{{ route('vendor-slider') }}"><span>{{ __('Sliders') }}</span></a>
                                     </li>
-                                    @if($gs->vendor_ship_info == 1)
+                                    {{-- @if($gs->vendor_ship_info == 1)
 	                                    <li>
 	                                    	<a href="{{ route('vendor-shipping-index') }}"><span>{{ $langg->lang719 }}</span></a>
 	                                    </li>
@@ -203,7 +203,7 @@
 	                                    <li>
 	                                    	<a href="{{ route('vendor-package-index') }}"><span>{{ $langg->lang721 }}</span></a>
 	                                    </li>
-	                                @endif
+	                                @endif --}}
                                     <li>
                                     	<a href="{{ route('vendor-social-index') }}"><span>{{ $langg->lang456 }}</span></a>
                                     </li>

@@ -1,9 +1,14 @@
+
+
+{{--  --}}
+
 @extends('layouts.front')
 @section('content')
 
 <section class="user-dashbord">
     <div class="container">
       <div class="row">
+        @include('includes.user-dashboard-sidebar')
                 <div class="col-lg-8">
 <div class="user-profile-details">
                         
@@ -23,7 +28,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <p class="value">
-                                            اساسي
+                                            {{$subs->title}}
                                         </p>
                                     </div>
                                 </div>
@@ -35,7 +40,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <p class="value">
-                                           10$
+                                            {{$subs->price}}{{$subs->currency}}
                                         </p>
                                     </div>
                                 </div>
@@ -47,36 +52,42 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <p class="value">
-                                           10 {{ $langg->lang403 }} 
+                                            {{$subs->days}} {{ $langg->lang403 }}
                                     </p></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <h5 class="title">
-                                            {{__('Sliders') }}
+                                            {{ $langg->lang414 }}
                                         </h5>
                                     </div>
                                     <div class="col-lg-8">
                                         <p class="value">
-                                            1   {{__('Sliders') }}
+                                            {{ $subs->allowed_products == 0 ? 'Unlimited':  $subs->allowed_products}}
                                         </p>
                                     </div>
                                 </div>
 
-                                        
-                                            {{-- @if($package->subscription_id != $subs ?? ''->id) --}}
-                                {{-- <div class="row">
+                                        @if(!empty($package))
+                                            @if($package->subscription_id != $subs->id)
+                                <div class="row">
                                     <div class="col-lg-4">
                                     </div>
                                     <div class="col-lg-8">
                                         <span class="notic"><b>{{ $langg->lang415 }}</b> {{ $langg->lang416 }}</span>
                                     </div>
-                                </div> --}}
+                                </div>
 
                                 <br>
-                                         
+                                            @else
+                                <br>
 
-                                        <form id="subscribe-form" class="pay-form" action="{{route('vendor-request-submit')}}" method="POST">
+                                            @endif
+                                        @else
+                                <br>
+                                        @endif
+
+                                        <form id="subscribe-form" class="pay-form" action="{{route('user-vendorsliderpay-request-submit')}}" method="POST">
 
                             @include('includes.form-success')
                             @include('includes.form-error')
@@ -84,9 +95,92 @@
                                             
                                             {{ csrf_field() }}
 
-                          {{-- <input type="hidden" name="subs_id" value="{{ $subs ?? ''->id }}"> --}}
 
-                                 {{-- @if($subs ?? ''->price != 0)        --}}
+                                        @if($user->is_vendor == 0)
+
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <h5 class="title pt-1">
+                                                    {{ $langg->lang238 }} *
+                                                </h5>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                    <input type="text"  id="shop-name" class="option" name="shop_name" placeholder="{{ $langg->lang238 }}" required>
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <h5 class="title pt-1">
+                                                    {{ $langg->lang239 }} *
+                                                </h5>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                    <input type="text" class="option" name="owner_name" placeholder="{{ $langg->lang239 }}" required>
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <h5 class="title pt-1">
+                                                    {{ $langg->lang240 }} *
+                                                </h5>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                    <input type="text" class="option" name="shop_number" placeholder="{{ $langg->lang240 }}" required>
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <h5 class="title pt-1">
+                                                    {{ $langg->lang241 }} *
+                                                </h5>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                    <input type="text" class="option" name="shop_address" placeholder="{{ $langg->lang241 }}" required>
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <h5 class="title pt-1">
+                                                    {{ $langg->lang242 }} <small>{{ $langg->lang417 }}</small>
+                                                </h5>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                    <input type="text" class="option" name="reg_number" placeholder="{{ $langg->lang242 }}">
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <h5 class="title pt-1">
+                                                    {{ $langg->lang243 }} <small>{{ $langg->lang417 }}</small>
+                                                </h5>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <textarea class="option" name="shop_message" placeholder="{{ $langg->lang243 }}" rows="5"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+
+                                        @endif
+                                        <input type="hidden" name="subs_id" value="{{ $subs->id }}">
+
+                                 @if($subs->price != 0)       
 
                                 <div class="row">
                                     <div class="col-lg-4">
@@ -189,14 +283,14 @@
                                                 <input type="hidden" name="cmd" value="_xclick">
                                                 <input type="hidden" name="no_note" value="1">
                                                 <input type="hidden" name="lc" value="UK">
-                                                <input type="hidden" name="currency_code" value="">
+                                                <input type="hidden" name="currency_code" value="{{strtoupper($subs->currency_code)}}">
                                                 <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
                                                 <input type="hidden" name="ref_id" id="ref_id" value="">
                                                 <input type="hidden" name="sub" id="sub" value="0">
                                                 <input type="hidden" name="ck" id="ck" value="0">
                                             </div>
 
-                               
+                                @endif
                                 <div class="row">
                                     <div class="col-lg-4">
                                     </div>
@@ -263,13 +357,13 @@ if($('#ck').val() == '0') {
 
                             $('#preloader').hide();
 
-                        
+                            var total = {{$subs->price}};
 
                                 var handler = PaystackPop.setup({
-                                  key: '',
-                                  email: '',
+                                  key: '{{$gs->paystack_key}}',
+                                  email: '{{$user->email}}',
                                   amount: total * 100,
-                                  currency: "",
+                                  currency: "{{strtoupper($subs->currency_code)}}",
                                   ref: ''+Math.floor((Math.random() * 1000000000) + 1),
                                   callback: function(response){
                                     $('#ref_id').val(response.reference);
@@ -309,11 +403,11 @@ if($('#ck').val() == '0') {
 </script>
 
 
-
+@if($subs->price != 0)
 <script type="text/javascript">
         function meThods(val) {
             var action1 = "{{route('user.paypal.submit')}}";
-            var action2 = "{{route('user.stripe.submit')}}";
+            var action2 = "{{route('user.stripeslide.submit')}}";
             var action3 = "{{route('user.instamojo.submit')}}";
             var action4 = "{{route('user.paystack.submit')}}";
             var action5 = "{{route('user.molly.submit')}}";
@@ -391,7 +485,7 @@ if($('#ck').val() == '0') {
             }
         }    
 </script>
-
+@endif
 
 <script type="text/javascript">
     

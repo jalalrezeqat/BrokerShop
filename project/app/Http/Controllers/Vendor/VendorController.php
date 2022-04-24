@@ -12,8 +12,10 @@ use Auth;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Subscription;
+use App\Models\Subscription_slider;
 use Session;
 use Validator;
+
 
 class VendorController extends Controller
 {
@@ -132,16 +134,40 @@ class VendorController extends Controller
         return view('vendor.banner',compact('data'));
     }
     public function slider()
-    {
+   {
+    
         $data = Auth::user();  
-        return view('vendor.slider',compact('data'));
+       
+        $subs = Subscription_slider::all();
+        $package = $data->subscribes()->where('status',1)->orderBy('id','desc')->first();
+        return view('vendor.slider',compact('data','subs','package'));
     }
     public function payslider()
     {
         $user = Auth::user();
         $subs = Subscription::all();
-        $package = $user->subscribes()->where('status',1)->orderBy('id','desc')->first();
+        $package = $user->subscribes()->where('status',2)->orderBy('id','desc')->first();
         return view('vendor.payslider');
+    }
+    public function packageslider()
+    {
+        $user = Auth::user();
+        $subs = Subscription_slider::all();
+        $package = $user->subscribes()->where('status',1)->orderBy('id','desc')->first();
+        return view('vendor.detailsslider',compact('user','subs','package'));
+    }
+    public function vendorrequestslider($id)
+    {   
+        
+        $subs = Subscription_slider::findOrFail($id);
+        $gs = Generalsetting::findOrfail(1);
+        $user = Auth::user();
+        $package = $user->subscribes()->where('status',1)->orderBy('id','desc')->first();
+        if($gs->reg_vendor != 1)
+        {
+            return redirect()->back();
+        }
+        return view('vendor.payslider',compact('user','subs','package'));
     }
     public function vendorslidsub(Request $request)
     {
@@ -276,6 +302,79 @@ class VendorController extends Controller
         $msg = '<div class="text-center"><i class="fas fa-check-circle fa-4x"></i><br><h3>'.$this->lang->lang804.'</h3></div>';
         return response()->json($msg);      
         //--- Redirect Section Ends     
+    }
+
+    public function vendorrequestslid(Request $request)
+    {
+         //--- Validation Section
+         $rules = [
+            'photo'      => 'required|mimes:jpeg,jpg,png,svg',
+             ];
+             $validator = Validator::make($request->all(), $rules);
+        
+             if ($validator->fails()) {
+               return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
+             }
+       
+        $user = Auth::user();
+      
+        // $package = $user->subscribes()->where('status',1)->orderBy('id','desc')->first();
+        $subs = Subscription_slider::findOrFail($request->subs_id);
+        // $settings = Generalsetting::findOrFail(1);
+                    // $today = Carbon::now()->format('Y-m-d');
+                    // $input = $request->all();  
+                    // $user->is_vendor = 2;
+                    // $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
+                    // $user->mail_sent = 1;     
+                    // $user->update($input);
+                    $sub = new Slider;
+                    $input = $request->all();
+                    if ($file = $request->file('photo')) 
+                    {      
+                       $name = time().str_replace(' ', '', $file->getClientOriginalName());
+                       $file->move('assets/images/sliders',$name);           
+                       $input['photo'] = $name;
+                   } 
+                    // $sub->slider_id = $subs->id;
+                    // $sub->subtitle = $subs->subtitle_text;
+                    // $sub->subsize = $subs->subtitle_size;
+                    // $sub->subcolor = $subs->subtitle_color	;
+                    // $sub->subanime = $subs->subtitle_anime	;
+                    // $sub->title = $subs->title_text;
+                    // $sub->size = $subs->title_size;
+                    // $sub->color = $subs->title_color	;
+                    // $sub->anime = $subs->title_anime	;
+                    // $sub->detitext = $subs->details_text;
+                    // $sub->detisize = $subs->details_size;
+                    // $sub->deticolor = $subs->details_color	;
+                    // $sub->detianime = $subs->details_anime	;
+                    // $sub->photo =$subs->photo;
+                    // $sub->position =$subs->position;
+                    // $sub->link =$subs->link;
+                    // $sub->status = 1;
+                    $sub->fill($input)->save();
+                    // if($settings->is_smtp == 1)
+                    // {
+                    // $data = [
+                    //     'to' => $user->email,
+                    //     'type' => "vendor_accept",
+                    //     'cname' => $user->name,
+                    //     'oamount' => "",
+                    //     'aname' => "",
+                    //     'aemail' => "",
+                    //     'onumber' => "",
+                    // ];    
+                    // $mailer = new BshopMailer();
+                    // $mailer->sendAutoMail($data);        
+                    // }
+                    // else
+                    // {
+                    // $headers = "From: ".$settings->from_name."<".$settings->from_email.">";
+                    // mail($user->email,'Your Vendor Account Activated','Your Vendor Account Activated Successfully. Please Login to your account and build your own shop.',$headers);
+                    // }
+
+                    return redirect()->route('user-dashboard')->with('success','Vendor Account Activated Successfully');
+
     }
 
 }

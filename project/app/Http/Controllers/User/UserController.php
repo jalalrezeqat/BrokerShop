@@ -11,6 +11,8 @@ use Validator;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Subscription;
+use App\Models\Subscription_slider;
+
 use App\Models\Generalsetting;
 use App\Models\UserSubscription;
 use App\Models\FavoriteSeller;
@@ -102,7 +104,7 @@ class UserController extends Controller
         $package = $user->subscribes()->where('status',1)->orderBy('id','desc')->first();
         return view('user.package.index',compact('user','subs','package'));
     }
-
+    
 
     public function vendorrequest($id)
     {
@@ -116,6 +118,7 @@ class UserController extends Controller
         }
         return view('user.package.details',compact('user','subs','package'));
     }
+   
 
     public function vendorrequestsub(Request $request)
     {

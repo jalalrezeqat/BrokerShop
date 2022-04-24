@@ -14,6 +14,7 @@ class SliderController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+        
     }
 
     //*** JSON Request
@@ -150,4 +151,7 @@ class SliderController extends Controller
         return response()->json($msg);      
         //--- Redirect Section Ends     
     }
+
+
+    
 }

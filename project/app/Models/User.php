@@ -104,6 +104,15 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany('App\Models\UserSubscription');
     }
+    public function Subscription_slider()
+    {
+        return $this->hasMany('App\Models\Subscription_slider');
+    }
+
+    public function sliders()
+    {
+        return $this->hasMany('App\Models\Slider');
+    }
 
     public function favorites()
     {
