@@ -58,7 +58,7 @@ class OrderController extends Controller
         $cart = unserialize(bzdecompress(utf8_decode($order->cart)));
         return view('vendor.order.print',compact('user','order','cart'));
     }
-
+ 
     public function status($slug,$status)
     {
         $mainorder = VendorOrder::where('order_number','=',$slug)->first();

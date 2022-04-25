@@ -902,7 +902,7 @@ Route::group(['middleware'=>'permissions:super'],function(){
 Route::prefix('user')->group(function() {
 
   // User Dashboard
-  Route::get('/', 'User\UserController@index')->name('user-dashboard');
+  Route::get('/dashbord', 'User\UserController@index')->name('user-dashboard');
 
   // User Login
   Route::get('/login', 'User\LoginController@showLoginForm')->name('user.login');
@@ -1077,13 +1077,13 @@ Route::prefix('vendor')->group(function() {
     Route::post('/products/import/csv/store', 'Vendor\ImportController@importStore')->name('vendor-import-csv-store');
     //IMPORT SECTION
 
-
+ 
   //------------ ADMIN ORDER SECTION ------------
   Route::get('/orders', 'Vendor\OrderController@index')->name('vendor-order-index');
   Route::get('/order/{id}/show', 'Vendor\OrderController@show')->name('vendor-order-show');
   Route::get('/order/{id}/invoice', 'Vendor\OrderController@invoice')->name('vendor-order-invoice');
   Route::get('/order/{id}/print', 'Vendor\OrderController@printpage')->name('vendor-order-print');
-  Route::get('/order/{id1}/status/{status}', 'Vendor\OrderController@status')->name('vendor-order-status');
+  Route::get('/order/{id}/status/{status}', 'Vendor\OrderController@status')->name('vendor-order-status');
   Route::post('/order/email/', 'Vendor\OrderController@emailsub')->name('vendor-order-emailsub');
   Route::post('/order/{slug}/license', 'Vendor\OrderController@license')->name('vendor-order-license');
 
