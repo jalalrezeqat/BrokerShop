@@ -59,15 +59,15 @@ class OrderController extends Controller
         return view('vendor.order.print',compact('user','order','cart'));
     }
  
-    public function status($slug,$status)
+    public function status($id,$status)
     {
-        $mainorder = VendorOrder::where('order_number','=',$slug)->first();
+        $mainorder = VendorOrder::where('order_id','=',$id)->first();
         if ($mainorder->status == "completed"){
             return redirect()->back()->with('success','This Order is Already Completed');
         }else{
 
         $user = Auth::user();
-        $order = VendorOrder::where('order_number','=',$slug)->where('user_id','=',$user->id)->update(['status' => $status]);
+        $order = VendorOrder::where('order_id','=',$id)->where('user_id','=',$user->id)->update(['status' => $status]);
         return redirect()->route('vendor-order-index')->with('success','Order Status Updated Successfully');
     }
     }
