@@ -31,21 +31,31 @@
 	<link rel="icon"  type="image/x-icon" href="{{asset('assets/images/'.$gs->favicon)}}"/>
 
 
-@if($langg->rtl == "1")
-
-	<!-- stylesheet -->
-	<link rel="stylesheet" href="{{asset('assets/front/css/rtl/all.css')}}">
-
+	@if($langg->rtl == "1")
+   
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="{{asset('assets/front/css/rtl/all.css')}}">
+    <style>
+        .buttonsearch
+        {
+            margin-left: 7%;
+        }
+    </style>
     <!--Updated CSS-->
- 	<link rel="stylesheet" href="{{ asset('assets/front/css/rtl/styles.php?color='.str_replace('#','',$gs->colors).'&amp;'.'header_color='.str_replace('#','',$gs->header_color).'&amp;'.'footer_color='.str_replace('#','',$gs->footer_color).'&amp;'.'copyright_color='.str_replace('#','',$gs->copyright_color).'&amp;'.'menu_color='.str_replace('#','',$gs->menu_color).'&amp;'.'menu_hover_color='.str_replace('#','',$gs->menu_hover_color)) }}">
-
+    <link rel="stylesheet" href="{{ asset('assets/front/css/rtl/styles.php?color='.str_replace('#','',$gs->colors).'&amp;'.'header_color='.str_replace('#','',$gs->header_color).'&amp;'.'footer_color='.str_replace('#','',$gs->footer_color).'&amp;'.'copyright_color='.str_replace('#','',$gs->copyright_color).'&amp;'.'menu_color='.str_replace('#','',$gs->menu_color).'&amp;'.'menu_hover_color='.str_replace('#','',$gs->menu_hover_color)) }}">
+ 
 @else
-
-	<!-- stylesheet -->
-	<link rel="stylesheet" href="{{asset('assets/front/css/all.css')}}">
-
+ 
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="{{asset('assets/front/css/all.css')}}">
+    <style>
+        .buttonsearch
+        {
+            margin-right: 7%;
+        }
+    </style>
     <!--Updated CSS-->
- 	<link rel="stylesheet" href="{{ asset('assets/front/css/styles.php?color='.str_replace('#','',$gs->colors).'&amp;'.'header_color='.str_replace('#','',$gs->header_color).'&amp;'.'footer_color='.str_replace('#','',$gs->footer_color).'&amp;'.'copyright_color='.str_replace('#','',$gs->copyright_color).'&amp;'.'menu_color='.str_replace('#','',$gs->menu_color).'&amp;'.'menu_hover_color='.str_replace('#','',$gs->menu_hover_color)) }}">
+    <link rel="stylesheet" href="{{ asset('assets/front/css/styles.php?color='.str_replace('#','',$gs->colors).'&amp;'.'header_color='.str_replace('#','',$gs->header_color).'&amp;'.'footer_color='.str_replace('#','',$gs->footer_color).'&amp;'.'copyright_color='.str_replace('#','',$gs->copyright_color).'&amp;'.'menu_color='.str_replace('#','',$gs->menu_color).'&amp;'.'menu_hover_color='.str_replace('#','',$gs->menu_hover_color)) }}">
 
 @endif
 
@@ -227,22 +237,30 @@
 							</div>
 
 							<form id="searchForm" class="search-form" action="{{ route('front.category', [Request::route('category'),Request::route('subcategory'),Request::route('childcategory')]) }}" method="GET">
-								@if (!empty(request()->input('sort')))
-									<input type="hidden" name="sort" value="{{ request()->input('sort') }}">
-								@endif
-								@if (!empty(request()->input('minprice')))
-									<input type="hidden" name="minprice" value="{{ request()->input('minprice') }}">
-								@endif
-								@if (!empty(request()->input('maxprice')))
-									<input type="hidden" name="maxprice" value="{{ request()->input('maxprice') }}">
-								@endif
-								<input type="text" id="prod_name" name="search" placeholder="{{ $langg->lang2 }}" value="{{ request()->input('search') }}" autocomplete="off">
-								<div class="autocomplete">
-								  <div id="myInputautocomplete-list" class="autocomplete-items">
-								  </div>
-								</div>
-								<button type="submit"><i class="icofont-search-1"></i></button>
-							</form>
+                                @if (!empty(request()->input('sort')))
+                                    <input type="hidden" name="sort" value="{{ request()->input('sort') }}">
+                                @endif
+                                @if (!empty(request()->input('minprice')))
+                                    <input type="hidden" name="minprice" value="{{ request()->input('minprice') }}">
+                                @endif
+                                @if (!empty(request()->input('maxprice')))
+                                    <input type="hidden" name="maxprice" value="{{ request()->input('maxprice') }}">
+                                @endif
+                                <input type="text" id="prod_name" name="search" placeholder="{{ $langg->lang2 }}" value="{{ request()->input('search') }}" autocomplete="off">
+                               
+                                <div class="autocomplete">
+                                  <div id="myInputautocomplete-list" class="autocomplete-items">
+                                  </div>
+                                </div>
+                               
+                                <button type="submit"><i class="icofont-search-1"></i></button>
+                                <button disabled class="buttonsearch">
+                                    <i>
+                                        <img  onclick="startDictation()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA91JREFUaEPtmWvonmMcxz9fSY0aQiY1Vg7lVDRlWjkUe7ERxQsZZrY1RfJKksOE7AWZwnIMmTTJOYdGlExkL5xqzinHHPICY/rqO9dTT8/+z7PruZ97tLqvl/d9X9f1/V6/7+93Xdf3Fjt40w6On47AYARt7wtcAiwADirvPwGeAe6Q9F2bUW81ArbPBe4EdgVeBd4vYI8ATgJ+A5ZLerQtEq0RsL0EuLsAXybp036QthONe4ATgCWS7m+DRCsEbB8JvA2sA86Q9NdU4GzvAjwJnAwcI+nDSUm0ReAJ4MRoXtJPo0DZ3gtITqyTdNb/TsD2HsD3wC2SrqwBZHslcDmwt6Rfa/oM+2biCNieB7wQbUt6vQaM7UQrSX6qpJdr+mxPAouAB4BZkr6oAWN7FvAZsEjSgzV9tieB5cBdwH6Svq0BY3sG8A1wsaTVNX06AsNWwHYXgU5Ck6xAJ6H/ugrZNrBe0pxErq0I2E4pzkl1rM11rI8L4I7AVBtZF4HaStTlwL+Jv9VZqJPQGBLaDGyQdGypSouB+4CZkr6qGcf2TOBL4KLe3dh27ssXStq5ZozeN03K6NfAZkkBETnMB54F5khaXzO57eOBN4D5kp4v42SMoyXtXzPGJATeAY4Cpkv6o/hAIXWNpBtrJrd9NXAdMEPSD4XAe8AmSbNrxpiEwK3lPrtA0nNl8rgRhwIHS/p9FADb8Yxyqf9A0iml/wHA58AqSbkrV7cmEoolEsBrJMXIiozmAq+Vq+VSSdmtt2q2M1/y5QJgrqQ3S/8rgJuBeZJeqkYP43ujtncC3gXiBc2WtKGAWBEZAQ8Bl0n6pR+I7T2B24GFkY+kfB/yef4xEDvmMEkpEtVt7AiUSU8HngLeih+UXCjPo+1rgYB/HIiu00L2bGD3vO/PFdsPF1ILJT1Sjbx82IhAARsnIo7EGuB8SX+X50nwSCLm7vQyT7yfmLsrJfVIZfWvAm4Ani6O3pTSG0VqEgLTgFeA44AXgXMk/TwgmzjVDDrSxWJcleMzsDFjDPatjURjAmW1dwMeSz0v7tz1wL2SNg1J4uTPmcBNwCFASnL2gjh7jdpEBAqJ7JyXlroeyUQuceqSH/GJ/gSyOcViPw1IVGL+3laSOZZ74zYxgd7M5YC2DDiv78fGILAfgSTqakkfNUbd17E1An1EMuaBwOExfItUQirlduMw670pmdYJDCRxDNwYudN6pbYp0GH9OgKjVtR2F4FtSa6TkO2lwJZj8RQtCbwPkH9oW44aA22tpLXbWuVR7yeOQO8y3hDECkm52DRuExNoPHNLHTsCLS1k42H+AdzWE0/1J7UWAAAAAElFTkSuQmCC" />
+                                    </i>
+                                </button>
+                            </form>
+
 						</div>
 					</div>
 				</div>
@@ -1038,6 +1056,38 @@
   var gs      = {!! json_encode(\App\Models\Generalsetting::first()->makeHidden(['stripe_key', 'stripe_secret', 'smtp_pass', 'instamojo_key', 'instamojo_token', 'paystack_key', 'paystack_email', 'paypal_business', 'paytm_merchant', 'paytm_secret', 'paytm_website', 'paytm_industry', 'paytm_mode', 'molly_key', 'razorpay_key', 'razorpay_secret'])) !!};
   var langg    = {!! json_encode($langg) !!};
 </script>
+{{--  --}}
+<script>
+    function startDictation() {
+   
+      if (window.hasOwnProperty('webkitSpeechRecognition')) {
+   
+        var recognition = new webkitSpeechRecognition();
+   
+        recognition.continuous = false;
+        recognition.interimResults = false;
+       
+       
+        recognition.lang = "en-EN";
+        recognition.start();
+       
+   
+        recognition.onresult = function(e) {
+          document.getElementById('prod_name').value
+                                   = e.results[0][0].transcript;
+          recognition.stop();
+          document.getElementById('searchForm').submit();
+        };
+   
+        recognition.onerror = function(e) {
+          recognition.stop();
+        }
+   
+      }
+    }
+  </script>
+ 
+
 
 	<!-- jquery -->
 	{{-- <script src="{{asset('assets/front/js/all.js')}}"></script> --}}
