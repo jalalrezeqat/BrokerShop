@@ -962,6 +962,12 @@ Route::prefix('user')->group(function() {
   Route::post('/sliderpay-request', 'Vendor\VendorController@vendorrequestslid')->name('user-vendorsliderpay-request-submit');
   Route::post('/stripeslid/submit', 'User\StripeController@storeslid')->name('user.stripeslide.submit');
   Route::post('/slider/createvendor', 'Vendor\VendorController@storslide')->name('vendor-slider-store');
+  Route::get('/slidervendor', 'vendor\SliderController@index')->name('vendor-sl-index');
+  Route::get('/slidervendor/create', 'Vendor\SliderController@create')->name('vendor-sl-create');
+  Route::post('/slidervendor/create', 'Vendor\SliderController@store')->name('vendor-sl-store');
+  Route::get('/slidervendor/edit/{id}', 'Vendor\SliderController@edit')->name('vendor-sl-edit');
+  Route::post('/slidervendor/edit/{id}', 'Vendor\SliderController@update')->name('vendor-sl-update');
+  Route::get('/slidervendor/delete/{id}', 'Vendor\SliderController@destroy')->name('vendor-sl-delete');
 
 
 

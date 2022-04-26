@@ -72,6 +72,7 @@
                                             <select class="vendor-btn {{ $order->status }}">
                                             <option value="{{ route('vendor-order-status',['slug' => $order->order->order_number, 'id'=>$order->order->id, 'status' => 'pending']) }}" {{  $order->status == "pending" ? 'selected' : ''  }}>{{ $langg->lang540 }}</option>
                                             <option value="{{ route('vendor-order-status',['slug' => $order->order->order_number, 'id'=>$order->order->id,'status' => 'processing']) }}" {{  $order->status == "processing" ? 'selected' : ''  }}>{{ $langg->lang541 }}</option>
+                                            <option value="{{ route('vendor-order-status',['slug' => $order->order->order_number, 'id'=>$order->order->id,'status' => 'on delivery']) }}" {{  $order->status == "on delivery" ? 'selected' : ''  }}>{{ __('On Delivery') }}</option>
                                             <option value="{{ route('vendor-order-status',['slug' => $order->order->order_number, 'id'=>$order->order->id,'status' => 'completed']) }}" {{  $order->status == "completed" ? 'selected' : ''  }}>{{ $langg->lang542 }}</option>
                                             <option value="{{ route('vendor-order-status',['slug' => $order->order->order_number, 'id'=>$order->order->id,'status' => 'declined']) }}" {{  $order->status == "declined" ? 'selected' : ''  }}>{{ $langg->lang543 }}</option>
                                             </select>

@@ -60,7 +60,9 @@ html {
                     <div class="section-padding add-product-1">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
+                                <div class="invoice__logo text-left">
+                           <img src="{{ asset('assets/images/'.$gs->invoice_logo) }}" alt="woo commerce logo">
+                        </div>
                                     <div class="product__header">
                                         <div class="row reorder-xs">
                                             <div class="col-lg-8 col-md-5 col-sm-5 col-xs-12">

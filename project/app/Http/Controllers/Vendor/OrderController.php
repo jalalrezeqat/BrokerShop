@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Models\Order;
+use App\Models\OrderTrack;
+
 use App\Models\VendorOrder;
 
 class OrderController extends Controller
@@ -68,6 +70,9 @@ class OrderController extends Controller
 
         $user = Auth::user();
         $order = VendorOrder::where('order_id','=',$id)->where('user_id','=',$user->id)->update(['status' => $status]);
+        $orderuser =order::where('id','=',$id)->update(['status' => $status]);
+        $orderuser =ordertrack::where('order_id','=',$id)->update(['title' => $status]);
+
         return redirect()->route('vendor-order-index')->with('success','Order Status Updated Successfully');
     }
     }

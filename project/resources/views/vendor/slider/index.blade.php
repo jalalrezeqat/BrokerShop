@@ -48,7 +48,7 @@
 
 
 {{-- ADD / EDIT MODAL --}}
-
+										
 										<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-hidden="true">
 										
 										

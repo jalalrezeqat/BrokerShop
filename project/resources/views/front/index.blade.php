@@ -52,6 +52,7 @@
        </section>
        <!-- Hero Area End -->
    @endif
+   
    <div>
     <section  class="trending">
         <div class="container">

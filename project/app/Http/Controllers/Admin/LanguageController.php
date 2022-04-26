@@ -103,7 +103,7 @@ class LanguageController extends Controller
         cache()->forget('languages');
         //--- Redirect Section     
         $msg = 'Data Updated Successfully.';
-        return response()->json($msg);      
+        return response()->json($msg);    
         //--- Redirect Section Ends            
     }
 
