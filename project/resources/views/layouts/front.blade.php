@@ -38,7 +38,7 @@
     <style>
         .buttonsearch
         {
-            margin-left: 6.5%;
+            margin-left: 7%;
         }
     </style>
     <!--Updated CSS-->
@@ -51,7 +51,7 @@
     <style>
         .buttonsearch
         {
-            margin-right: 6.5%;
+            margin-right: 7%;
         }
     </style>
     <!--Updated CSS-->
