@@ -363,7 +363,7 @@
                       </li>
                     </ul>
                   </div>
-                  <div class="social-links social-sharing a2a_kit a2a_kit_size_32">
+                  {{-- <div class="social-links social-sharing a2a_kit a2a_kit_size_32">
                     <ul class="link-list social-links">
                       <li>
                         <a class="facebook a2a_button_facebook" href="">
@@ -386,7 +386,7 @@
                         </a>
                       </li>
                     </ul>
-                  </div>
+                  </div> --}}
                   <script async src="https://static.addtoany.com/menu/page.js"></script>
 
 
