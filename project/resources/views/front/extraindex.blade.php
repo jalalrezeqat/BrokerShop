@@ -195,36 +195,38 @@
 						</div>
 					</div>
 				</div>
+				{{-- Product Random --}}
 				<div class="row">
-					<div class="col-lg-9">
+					<div class="col-lg-12">
 						<div class="row ">
 
 							@foreach($big_products as $prod)
-								@include('includes.product.home-product')
+										@include('includes.product.top-product')
 							@endforeach
 
 							@foreach($hot_products->chunk(3) as $chunk)
-								@foreach($chunk as $prod)
-									@include('includes.product.home-product')
-								@endforeach
+										@foreach($chunk as $prod)
+											@include('includes.product.top-product')
+										@endforeach
 							@endforeach
 
 							@foreach($hot_products->chunk(3) as $chunk)
-									@foreach($chunk as $prod)
-										@include('includes.product.list-product')
-									@endforeach
+										@foreach($chunk as $prod)
+											@include('includes.product.top-product')
+										@endforeach
 							@endforeach
 
 							@foreach($latest_products->chunk(3) as $chunk)				
-									@foreach($chunk as $prod)
-											@include('includes.product.list-product')
-									@endforeach
+										@foreach($chunk as $prod)
+											@include('includes.product.top-product')
+										@endforeach
 							@endforeach
 
-													
+						
+						
 						</div>
 					</div>
-					<div class="col-lg-3 remove-padding d-none d-lg-block">
+					{{-- <div class="col-lg-3 remove-padding d-none d-lg-block">
 						<div class="aside">
 							<a class="banner-effect mb-10" href="{{ $ps->big_save_banner_link }}">
 								<img src="{{asset('assets/images/'.$ps->big_save_banner)}}" alt="">
@@ -232,7 +234,7 @@
 							<a class="banner-effect" href="{{ $ps->big_save_banner_link1 }}">
 								<img src="{{asset('assets/images/'.$ps->big_save_banner1)}}" alt="">
 							</a>
-						</div>
+						</div> --}}
 					</div>
 				</div>
 			</div>
