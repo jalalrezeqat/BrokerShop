@@ -202,7 +202,7 @@ class FrontendController extends Controller
            return false;
  
          });
-       $hot_products =  Product::with('user')->where('hot','=',1)->where('status','=',1)->select($selectable)->orderBy('id','desc')->take(9)->get()->reject(function($item){
+       $hot_products =  Product::with('user')->where('hot','=',1)->where('status','=',1)->select($selectable)->orderBy('id','desc')->take(20)->get()->reject(function($item){
  
            if($item->user_id != 0){
              if($item->user->is_vendor != 2){
@@ -212,7 +212,7 @@ class FrontendController extends Controller
            return false;
  
          });
-       $latest_products =  Product::with('user')->where('latest','=',1)->where('status','=',1)->select($selectable)->orderBy('id','desc')->take(9)->get()->reject(function($item){
+       $latest_products =  Product::with('user')->where('latest','=',1)->where('status','=',1)->select($selectable)->orderBy('id','desc')->take(30)->get()->reject(function($item){
  
            if($item->user_id != 0){
              if($item->user->is_vendor != 2){

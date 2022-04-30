@@ -139,7 +139,7 @@
 		<!-- Banner Area One Start -->
 	@endif
 
-	@if($ps->big == 1)
+	{{-- @if($ps->big == 1)
 		<!-- Clothing and Apparel Area Start -->
 		<section class="categori-item clothing-and-Apparel-Area">
 			<div class="container">
@@ -179,8 +179,67 @@
 			</div>
 		</section>
 		<!-- Clothing and Apparel Area start-->
-	@endif
+	@endif --}}
+@if($ps->big == 1)
+		<!-- Clothing and Apparel Area Start -->
+		<section class="categori-item clothing-and-Apparel-Area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 remove-padding">
+						<div class="section-top">
+							<h2 class="section-title">
+								{{-- {{ $langg->lang29 }} --}}
+								{{-- {{ $langg->lang30 }} --}}
+							</h2>
 
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-9">
+						<div class="row ">
+
+							@foreach($big_products as $prod)
+								@include('includes.product.home-product')
+							@endforeach
+
+							@foreach($hot_products->chunk(3) as $chunk)
+								@foreach($chunk as $prod)
+									@include('includes.product.home-product')
+								@endforeach
+							@endforeach
+
+							@foreach($hot_products->chunk(3) as $chunk)
+									@foreach($chunk as $prod)
+										@include('includes.product.list-product')
+									@endforeach
+							@endforeach
+
+							@foreach($latest_products->chunk(3) as $chunk)				
+									@foreach($chunk as $prod)
+											@include('includes.product.list-product')
+									@endforeach
+							@endforeach
+
+													
+						</div>
+					</div>
+					<div class="col-lg-3 remove-padding d-none d-lg-block">
+						<div class="aside">
+							<a class="banner-effect mb-10" href="{{ $ps->big_save_banner_link }}">
+								<img src="{{asset('assets/images/'.$ps->big_save_banner)}}" alt="">
+							</a>
+							<a class="banner-effect" href="{{ $ps->big_save_banner_link1 }}">
+								<img src="{{asset('assets/images/'.$ps->big_save_banner1)}}" alt="">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+		<!-- Clothing and Apparel Area start-->
+	@endif
 	@if($ps->hot_sale == 1)
 		<!-- hot-and-new-item Area Start -->
 		<section class="hot-and-new-item">
@@ -190,7 +249,7 @@
 						<div class="accessories-slider">
 							<div class="slide-item">
 								<div class="row">
-									<div class="col-lg-3 col-sm-6">
+									{{-- <div class="col-lg-3 col-sm-6">
 										<div class="categori">
 											<div class="section-top">
 												<h2 class="section-title">
@@ -205,12 +264,12 @@
 																@include('includes.product.list-product')
 															@endforeach
 														</ul>
-													</div>
+			 										</div>
 												@endforeach
 											</div>
 
 										</div>
-									</div>
+									</div> --}}
 									<div class="col-lg-3 col-sm-6">
 										<div class="categori">
 											<div class="section-top">
