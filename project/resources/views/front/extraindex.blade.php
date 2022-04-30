@@ -251,7 +251,7 @@
 						<div class="accessories-slider">
 							<div class="slide-item">
 								<div class="row">
-									{{-- <div class="col-lg-3 col-sm-6">
+									<div class="col-lg-3 col-sm-6">
 										<div class="categori">
 											<div class="section-top">
 												<h2 class="section-title">
@@ -271,7 +271,7 @@
 											</div>
 
 										</div>
-									</div> --}}
+									</div>
 									<div class="col-lg-3 col-sm-6">
 										<div class="categori">
 											<div class="section-top">
