@@ -164,14 +164,14 @@
 											</a>
 											<div class="my-dropdown-menu profile-dropdown">
 												<ul class="profile-links">
-													<li>
+													{{-- <li>
 														<a href="{{ route('user-dashboard') }}"><i class="fas fa-angle-double-right"></i> {{ $langg->lang221 }}</a>
 													</li>
 													@if(Auth::user()->IsVendor())
 													<li>
 														<a href="{{ route('vendor-dashboard') }}"><i class="fas fa-angle-double-right"></i> {{ $langg->lang222 }}</a>
 													</li>
-													@endif
+													@endif --}}
 
 													<li>
 														<a href="{{ route('user-profile') }}"><i class="fas fa-angle-double-right"></i> {{ $langg->lang205 }}</a>
@@ -404,6 +404,18 @@
 							<li>
 								<a href="javascript:;" data-toggle="modal" data-target="#track-order-modal" class="track-btn">{{ $langg->lang16 }}</a>
 							</li>
+							@if (Auth::user())
+								
+							<li>
+								<a href="{{ route('user-dashboard') }}"><i class="fnav-header"></i> {{ $langg->lang221 }}</a>
+							</li>
+							@if(Auth::user()->IsVendor())
+							<li>
+								<a href="{{ route('vendor-dashboard') }}"><i class="nav-header"></i> {{ $langg->lang222 }}</a>
+							</li>
+							@endif
+							@endif
+
 						</ul>
 
 					</nav>
