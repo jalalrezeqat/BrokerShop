@@ -137,7 +137,7 @@
 										</div>
 									</div>
 		
-									<div class="row">
+									{{-- <div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
 												<h4 class="heading">{{ $langg->lang640 }}*</h4>
@@ -149,7 +149,7 @@
 											</select>
 										</div>
 									</div>
-		
+		 --}}
 		
 									<div id="catAttributes"></div>
 									<div id="subcatAttributes"></div>
@@ -427,7 +427,7 @@
 									</div>
 		
 		
-		
+{{-- 		
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="left-area">
@@ -442,7 +442,7 @@
 											</div>
 										</div>
 									</div>
-		
+		 --}}
 		
 									<div class="row">
 										<div class="col-lg-12">

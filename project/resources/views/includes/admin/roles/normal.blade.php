@@ -27,7 +27,7 @@
 @endif
 
 @if(Auth::guard('admin')->user()->sectionCheck('products'))
-
+ 
     <li>
         <a href="#menu2" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="icofont-cart"></i>{{ __('Products') }}

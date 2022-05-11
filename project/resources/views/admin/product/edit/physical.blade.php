@@ -142,7 +142,7 @@
 													</div>
 												</div>
 
-												<div class="row">
+												{{-- <div class="row">
 													<div class="col-lg-12">
 														<div class="left-area">
 																<h4 class="heading">{{ __('Child Category') }}*</h4>
@@ -164,7 +164,7 @@
 	                                                  @endif
 															</select>
 													</div>
-												</div>
+												</div> --}}
 
 
 												@php
@@ -725,7 +725,7 @@
 
 
 
-												<div class="row">
+												{{-- <div class="row">
 													<div class="col-lg-12">
 														<div class="left-area">
 															<h4 class="heading">
@@ -738,7 +738,7 @@
 															<textarea name="policy" class="nic-edit-p">{{$data->policy}}</textarea>
 														</div>
 													</div>
-												</div>
+												</div> --}}
 
 
 												<div class="row">
