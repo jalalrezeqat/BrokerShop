@@ -67,33 +67,7 @@
                           </div>
                         </div>
 
-                        <div class="row">
-                          <div class="col-lg-4">
-                            <div class="left-area">
-                                <h4 class="heading">{{ __("Product Limitations") }}*</h4>
-                            </div>
-                          </div>
-                          <div class="col-lg-7">
-                              <select id="limit" name="limit" required="">
-                                  <option value="">{{ __("Select an Option") }}</option>
-                                  <option {{ $data->allowed_products == 0 ? "selected" : "" }} value="0">{{ __("Unlimited") }}</option>
-                                  <option {{ $data->allowed_products != 0 ? "selected" : "" }} value="1">{{ __("Limited") }}</option>
-                              </select>
-                          </div>
-                        </div>
-
-                        <div class="{{ $data->allowed_products == 0 ? 'showbox' : '' }}" id="limits">
-                          <div class="row">
-                            <div class="col-lg-4">
-                              <div class="left-area">
-                                  <h4 class="heading">{{ __("Allowed Products") }} *</h4>
-                              </div>
-                            </div>
-                            <div class="col-lg-7">
-                              <input type="number" min="1" class="input-field" id="allowed_products" name="allowed_products" placeholder="{{ __("Enter Allowed Products") }}" {{ $data->allowed_products != 0 ? "required" : "" }} value="{{ $data->allowed_products != 0 ? $data->allowed_products : '1' }}">
-                            </div>
-                          </div>
-                        </div>
+                        
 
                         <div class="row">
                           <div class="col-lg-4">

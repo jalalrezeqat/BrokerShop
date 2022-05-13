@@ -6,13 +6,13 @@
             <div class="mr-breadcrumb">
               <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="heading">{{ __("Vendor Subscription Plans") }}</h4>
+                    <h4 class="heading">{{ __("Vendor Subscription Plans slider") }}</h4>
                     <ul class="links">
                       <li>
                         <a href="{{ route('admin.dashboard') }}">{{ __("Dashboard") }} </a>
                       </li>
                       <li>
-                        <a href="{{ route('admin-subscriptionslider-index') }}">{{ __("Vendor Subscription Plans") }}</a>
+                        <a href="{{ route('admin-subscriptionslider-index') }}">{{ __("Vendor Subscription Plans slider") }}</a>
                       </li>
                     </ul>
                 </div>
@@ -33,7 +33,6 @@
                                           <th>{{ __("Currency Symbol") }}</th>
                                           <th>{{ __("Cost") }}</th>
                                           <th>{{ __("Duration") }}</th>
-                                          <th>{{ __("Product Allowed") }}</th>
                                           <th>{{ __("Options") }}</th>
                             </tr>
                           </thead>
@@ -109,7 +108,7 @@
 
 @section('scripts')
 
-
+ 
 {{-- DATA TABLE --}}
 
     <script type="text/javascript">
@@ -124,7 +123,6 @@
                         { data: 'currency', name: 'currency' },
                         { data: 'price', name: 'price' },
                         { data: 'days', name: 'days' },
-                        { data: 'allowed_products', name: 'allowed_products' },
                   { data: 'action', searchable: false, orderable: false }
 
                      ],

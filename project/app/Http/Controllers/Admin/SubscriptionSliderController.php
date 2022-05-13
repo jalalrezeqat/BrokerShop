@@ -28,12 +28,9 @@ class SubscriptionSliderController extends Controller
                                 $price = round($data->price,2);
                                 return $price;
                             })
-                            ->editColumn('allowed_products', function(Subscription_slider $data) {
-                                $allowed_products = $data->allowed_products == 0 ? "Unlimited": $data->allowed_products;
-                                return $allowed_products;
-                            })
+                           
                             ->addColumn('action', function(Subscription_slider $data) {
-                                return '<div class="action-list"><a data-href="' . route('admin-subscription-edit',$data->id) . '" class="edit" data-toggle="modal" data-target="#modal1"> <i class="fas fa-edit"></i>Edit</a><a href="javascript:;" data-href="' . route('admin-subscription-delete',$data->id) . '" data-toggle="modal" data-target="#confirm-delete" class="delete"><i class="fas fa-trash-alt"></i></a></div>';
+                                return '<div class="action-list"><a data-href="' . route('admin-subscriptionslider-edit',$data->id) . '" class="edit" data-toggle="modal" data-target="#modal1"> <i class="fas fa-edit"></i>Edit</a><a href="javascript:;" data-href="' . route('admin-subscriptionslider-delete',$data->id) . '" data-toggle="modal" data-target="#confirm-delete" class="delete"><i class="fas fa-trash-alt"></i></a></div>';
                             }) 
                             ->rawColumns(['action'])
                             ->toJson(); //--- Returning Json Data To Client Side
@@ -59,10 +56,7 @@ class SubscriptionSliderController extends Controller
         $data = new Subscription_slider();
         $input = $request->all();
 
-        if($input['limit'] == 0)
-         {
-            $input['allowed_products'] = 0;
-         }
+       
 
         $data->fill($input)->save();
         //--- Logic Section Ends
@@ -83,16 +77,14 @@ class SubscriptionSliderController extends Controller
     //*** POST Request
     public function update(Request $request, $id)
     {
+        $data = Subscription_slider::findOrFail($id);
         //--- Logic Section
         $data = Subscription_slider::findOrFail($id);
         $input = $request->all();
-        if($input['limit'] == 0)
-         {
-            $input['allowed_products'] = 0;
-         }
+       
         $data->update($input);
         //--- Logic Section Ends
-        $data->subs()->update(['allowed_products' => $data->allowed_products]);
+        $data->Subscription_slider()->update(['allowed_products' => $data->allowed_products]);
 
         //--- Redirect Section     
         $msg = 'Data Updated Successfully.';

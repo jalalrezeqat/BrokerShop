@@ -68,33 +68,9 @@
                           </div>
                         </div>
 
-                        <div class="row">
-                          <div class="col-lg-4">
-                            <div class="left-area">
-                                <h4 class="heading">{{ __("Product Limitations") }}*</h4>
-                            </div>
-                          </div>
-                          <div class="col-lg-7">
-                              <select id="limit" name="limit" required="">
-                                  <option value="">{{ __("Select an Option") }}</option>
-                                  <option value="0">{{ __("Unlimited") }}</option>
-                                  <option value="1">{{ __("Limited") }}</option>
-                              </select>
-                          </div>
-                        </div>
+                       
 
-                        <div class="showbox" id="limits">
-                          <div class="row">
-                            <div class="col-lg-4">
-                              <div class="left-area">
-                                  <h4 class="heading">{{ __("Allowed Products") }} *</h4>
-                              </div>
-                            </div>
-                            <div class="col-lg-7">
-                              <input type="number" min="1" class="input-field" id="allowed_products" name="allowed_products" placeholder="{{ __("Enter Allowed Products") }}" value="1">
-                            </div>
-                          </div>
-                        </div>
+                      
 
                         <div class="row">
                           <div class="col-lg-4">
