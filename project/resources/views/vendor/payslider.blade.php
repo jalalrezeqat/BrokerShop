@@ -13,9 +13,9 @@
 <div class="user-profile-details">
                         
 <div class="account-info">
-                            <div class="header-area">
+                            <div class="header-area"> 
                                 <h4 class="title">
-                                    {{ $langg->lang409 }} <a class="mybtn1" href="{{route('user-package')}}"> <i class="fas fa-arrow-left"></i> {{ $langg->lang410 }}</a>
+                                    {{ $langg->lang409 }} <a class="mybtn1" href="{{route('vendor.detailsslider')}}"> <i class="fas fa-arrow-left"></i> {{ $langg->lang410 }}</a>
                                 </h4>
                             </div>
                             <div class="pack-details">

@@ -15,6 +15,9 @@ use App\Models\Subscription;
 use App\Models\Subscription_slider;
 use Session;
 use Validator;
+use App\Models\Slider;
+
+
 
 
 class VendorController extends Controller
@@ -306,20 +309,20 @@ class VendorController extends Controller
 
     public function vendorrequestslid(Request $request)
     {
-         //--- Validation Section
-         $rules = [
-            'photo'      => 'required|mimes:jpeg,jpg,png,svg',
-             ];
-             $validator = Validator::make($request->all(), $rules);
+        //  //--- Validation Section
+        //  $rules = [
+        //     'photo'      => 'required|mimes:jpeg,jpg,png,svg',
+        //      ];
+        //      $validator = Validator::make($request->all(), $rules);
         
-             if ($validator->fails()) {
-               return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
-             }
+        //      if ($validator->fails()) {
+        //        return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
+        //      }
        
-        $user = Auth::user();
+        // $user = Auth::user();
       
         // $package = $user->subscribes()->where('status',1)->orderBy('id','desc')->first();
-        $subs = Subscription_slider::findOrFail($request->subs_id);
+        // $subs = Subscription_slider::findOrFail($request->subs_id);
         // $settings = Generalsetting::findOrFail(1);
                     // $today = Carbon::now()->format('Y-m-d');
                     // $input = $request->all();  
@@ -327,14 +330,14 @@ class VendorController extends Controller
                     // $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
                     // $user->mail_sent = 1;     
                     // $user->update($input);
-                    $sub = new Slider;
-                    $input = $request->all();
-                    if ($file = $request->file('photo')) 
-                    {      
-                       $name = time().str_replace(' ', '', $file->getClientOriginalName());
-                       $file->move('assets/images/sliders',$name);           
-                       $input['photo'] = $name;
-                   } 
+                    // $sub = new Slider;
+                    // $input = $request->all();
+                //     if ($file = $request->file('photo')) 
+                //     {      
+                //        $name = time().str_replace(' ', '', $file->getClientOriginalName());
+                //        $file->move('assets/images/sliders',$name);           
+                //        $input['photo'] = $name;
+                //    } 
                     // $sub->slider_id = $subs->id;
                     // $sub->subtitle = $subs->subtitle_text;
                     // $sub->subsize = $subs->subtitle_size;
@@ -352,7 +355,7 @@ class VendorController extends Controller
                     // $sub->position =$subs->position;
                     // $sub->link =$subs->link;
                     // $sub->status = 1;
-                    $sub->fill($input)->save();
+                    // $sub->fill($input)->save();
                     // if($settings->is_smtp == 1)
                     // {
                     // $data = [
@@ -373,8 +376,60 @@ class VendorController extends Controller
                     // mail($user->email,'Your Vendor Account Activated','Your Vendor Account Activated Successfully. Please Login to your account and build your own shop.',$headers);
                     // }
 
-                    return redirect()->route('user-dashboard')->with('success','Vendor Account Activated Successfully');
+                    return redirect()->route('vendor-sl-create')->with('success','Vendor Account Activated Successfully');
 
     }
 
+    public function indexslider()
+    {
+        return view('vendor.slider.index');
+    }
+
+    //*** GET Request
+    public function createslider(Request $request)
+    {
+       
+
+        return view('vendor.slider.create');
+       
+    }
+
+    //*** POST Request
+    public function storeslider(Request $request)
+    {
+        //--- Validation Section
+        $rules = [
+               'photo'      => 'required|mimes:jpeg,jpg,png,svg',
+                ];
+
+        $validator = Validator::make($request->all(), $rules);
+        
+        
+        if ($validator->fails()) {
+          return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
+        }
+        //--- Validation Section Ends
+
+        //--- Logic Section
+        $data = new Slider();
+        $input = $request->all();
+        if ($file = $request->file('photo')) 
+         {      
+            $name = time().str_replace(' ', '', $file->getClientOriginalName());
+            $file->move('assets/images/sliders',$name);           
+            $input['photo'] = $name;
+        } 
+        $data->fill($input)->save();
+        //--- Logic Section Ends
+
+        //--- Redirect Section        
+        //--- Redirect Section Ends   
+        return redirect()->route('vendor-dashboard');
+        
+    }
+
+   
+
 }
+
+

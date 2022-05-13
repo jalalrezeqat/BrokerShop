@@ -227,28 +227,28 @@ public function storeslid(Request $request){
                 // }
                
                 $user->update($input);
-                $sub = new Slider;
-                // $sub->id = $subs->id;
-                $sub->subtitle_text = $subs->subtitle_text;
-                $sub->subtitle_size = $subs->subtitle_size;
-                $sub->subtitle_color = $subs->subtitle_color	;
-                $sub->subtitle_anime = $subs->subtitle_anime	;
-                $sub->title_text = $subs->title_text;
-                $sub->title_size = $subs->title_size;
-                $sub->title_color = $subs->title_color	;
-                $sub->title_anime = $subs->title_anime	;
-                $sub->details_text = $subs->details_text;
-                $sub->details_size = $subs->details_size;
-                $sub->details_color = $subs->details_color	;
-                $sub->details_anime = $subs->details_anime	;
-                $sub->photo =$subs->photo;
-                $sub->position =$subs->position;
-                $sub->link =$subs->link;
-                // $sub->method = 'Stripe';
-                // $sub->txnid = $charge['balance_transaction'];
-                // $sub->charge_id = $charge['id'];
-                // $sub->status = 1;
-                $sub->save();
+                // $sub = new Slider;
+                // // $sub->id = $subs->id;
+                // $sub->subtitle_text = $subs->subtitle_text;
+                // $sub->subtitle_size = $subs->subtitle_size;
+                // $sub->subtitle_color = $subs->subtitle_color	;
+                // $sub->subtitle_anime = $subs->subtitle_anime	;
+                // $sub->title_text = $subs->title_text;
+                // $sub->title_size = $subs->title_size;
+                // $sub->title_color = $subs->title_color	;
+                // $sub->title_anime = $subs->title_anime	;
+                // $sub->details_text = $subs->details_text;
+                // $sub->details_size = $subs->details_size;
+                // $sub->details_color = $subs->details_color	;
+                // $sub->details_anime = $subs->details_anime	;
+                // $sub->photo =$subs->photo;
+                // $sub->position =$subs->position;
+                // $sub->link =$subs->link;
+                // // $sub->method = 'Stripe';
+                // // $sub->txnid = $charge['balance_transaction'];
+                // // $sub->charge_id = $charge['id'];
+                // // $sub->status = 1;
+                // $sub->save();
                 if($settings->is_smtp == 1)
                 {
                 $data = [
@@ -269,7 +269,7 @@ public function storeslid(Request $request){
                 mail($user->email,'Your Vendor Account Activated','Your Vendor Account Activated Successfully. Please Login to your account and build your own shop.',$headers);
                 }
 
-                return redirect()->route('user-dashboard')->with('success','Vendor Account Activated Successfully');
+                return redirect()->route('vendor-sl-create')->with('success','Vendor Account Activated Successfully');
 
             }
             

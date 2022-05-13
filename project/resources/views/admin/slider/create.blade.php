@@ -1,50 +1,6 @@
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="author" content="BshopOcean">
-	  <meta name="csrf-token" content="{{ csrf_token() }}">
-	<!-- Title -->
-	<title>{{$gs->title}}</title>
-	<!-- favicon -->
-	<link rel="icon"  type="image/x-icon" href="{{asset('assets/images/'.$gs->favicon)}}"/>
-	<!-- Bootstrap -->
-	<link href="{{asset('assets/vendor/css/bootstrap.min.css')}}" rel="stylesheet" />
-	<!-- Fontawesome -->
-	<link rel="stylesheet" href="{{asset('assets/vendor/css/fontawesome.css')}}">
-	<!-- icofont -->
-	<link rel="stylesheet" href="{{asset('assets/vendor/css/icofont.min.css')}}">
-	<!-- Sidemenu Css -->
-	<link href="{{asset('assets/admin/plugins/fullside-menu/css/dark-side-style.css')}}" rel="stylesheet" />
-	<link href="{{asset('assets/vendor/plugins/fullside-menu/waves.min.css')}}" rel="stylesheet" />
+@extends('layouts.vendor')
+@section('content')
 
-	<link href="{{asset('assets/vendor/css/plugin.css')}}" rel="stylesheet" />
-
-	<link href="{{asset('assets/vendor/css/jquery.tagit.css')}}" rel="stylesheet" />
-	<link rel="stylesheet" href="{{ asset('assets/vendor/css/bootstrap-coloroicker.css') }}">
-	<!-- Main Css -->
-
-@if($langg->rtl == "1")
-
-<link href="{{asset('assets/admin/css/rtl/style.css')}}" rel="stylesheet"/>
-<link href="{{asset('assets/admin/css/rtl/custom.css')}}" rel="stylesheet"/>
-<link href="{{asset('assets/admin/css/rtl/responsive.css')}}" rel="stylesheet" />
-<link href="{{asset('assets/admin/css/common.css')}}" rel="stylesheet" />
-
-@else
-
-<link href="{{asset('assets/admin/css/style.css')}}" rel="stylesheet"/>
-<link href="{{asset('assets/admin/css/custom.css')}}" rel="stylesheet"/>
-<link href="{{asset('assets/admin/css/responsive.css')}}" rel="stylesheet" />
-<link href="{{asset('assets/admin/css/common.css')}}" rel="stylesheet" />
-
-@endif
-
-	@yield('styles')
-
-</head>
-<body>
 	
 						<div class="content-area">
 							<div class="mr-breadcrumb">
@@ -60,17 +16,15 @@
 												<a href="javascript:;">{{ $langg->lang452 }} </a>
 											</li>
 											<li>
-												<a href="{{ route('vendor-sl-create') }}">{{ __('Sliders') }}</a>
+												<a href="{{ route('vendor-slider') }}">{{ __('Sliders') }}</a>
 											</li>
 										</ul>
 
 
-									
+
 									</div>
 								</div>
 							</div>
-
-							
 							<div class="add-product-content1">
 								<div class="row">
 									<div class="col-lg-12">
@@ -78,8 +32,10 @@
 											<div class="body-area">
 
 				                        <div class="gocover" style="background: url({{asset('assets/images/'.$gs->admin_loader)}}) no-repeat scroll center center rgba(45, 45, 45, 0.5);"></div>
-											
-											<form id="Bshopform" action="{{route('vendor-sl-store-submit')}}" method="POST" enctype="multipart/form-data">
+											 
+
+				
+											<form id="Bshopform" action="{{route('admin-sl-store')}}" method="POST" enctype="multipart/form-data">
 												{{csrf_field()}}
 											  @include('includes.admin.form-both') 
 											 
@@ -299,8 +255,6 @@
 														</select>
 												  </div>
 												</div>
-
-												
 												
 												<div class="row">
 												  <div class="col-lg-4">
@@ -308,24 +262,22 @@
 													  
 													</div>
 												  </div>
-												
+												  
 												  <div class="col-lg-7">
 													<button class="addProductSubmit-btn" type="submit">{{ __('Create Slider') }}</button>
 												  </div>
 												</div>
-
-												
+						
 											</form>
-											
-			  
+
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 
-					
+
+
 						
-						
-</body>
-</html>
+@endsection
