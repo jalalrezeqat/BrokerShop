@@ -205,26 +205,26 @@ public function storeslid(Request $request){
                 $date = date('Y-m-d', strtotime($today.' + '.$subss->days.' days'));
                 $input = $request->all();  
                 $user->is_vendor = 2;
-                // if(!empty($package))
-                // {
-                //     if($package->subscription_id == $request->subs_id)
-                //     {
-                //         $newday = strtotime($today);
-                //         $lastday = strtotime($user->date);
-                //         $secs = $lastday-$newday;
-                //         $days = $secs / 86400;
-                //         $total = $days+$subs->days;
-                //         $user->date = date('Y-m-d', strtotime($today.' + '.$total.' days'));
-                //     }
-                //     else
-                //     {
-                //         $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
-                //     }
-                // }
-                // else
-                // {
-                //     $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
-                // }
+                if(!empty($package))
+                {
+                    if($package->subscription_id == $request->subs_id)
+                    {
+                        $newday = strtotime($today);
+                        $lastday = strtotime($user->date);
+                        $secs = $lastday-$newday;
+                        $days = $secs / 86400;
+                        $total = $days+$subs->days;
+                        $user->date = date('Y-m-d', strtotime($today.' + '.$total.' days'));
+                    }
+                    else
+                    {
+                        $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
+                    }
+                }
+                else
+                {
+                    $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
+                }
                
                 $user->update($input);
                 // $sub = new Slider;
