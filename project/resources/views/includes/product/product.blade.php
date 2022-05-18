@@ -3,6 +3,7 @@
 
 
 										<a href="{{ route('front.product', $prod->slug) }}" class="item">
+												
 											<div class="item-img">
 												@if(!empty($prod->features))
 													<div class="sell-area">
