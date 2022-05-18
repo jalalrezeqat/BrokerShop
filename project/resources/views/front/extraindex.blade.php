@@ -200,10 +200,10 @@
 					<div class="col-lg-12">
 						<div class="row ">
 
-							@foreach($big_products as $prod)
+							@foreach($products as $prod)
 										@include('includes.product.top-product')
 							@endforeach
-
+{{-- 
 							@foreach($hot_products->chunk(3) as $chunk)
 										@foreach($chunk as $prod)
 											@include('includes.product.top-product')
@@ -220,7 +220,7 @@
 										@foreach($chunk as $prod)
 											@include('includes.product.top-product')
 										@endforeach
-							@endforeach
+							@endforeach --}}
 
 						
 						
