@@ -20,7 +20,7 @@ class SliderController extends Controller
     //*** JSON Request
     public function datatables()
     {
-         $datas = Slider::orderBy('id','desc')->get();
+         $datas = Slider::orderBy('id','desc')->where('addpy','=','1')->get();
          //--- Integrating This Collection Into Datatables
          return Datatables::of($datas)
                             ->editColumn('photo', function(Slider $data) {
@@ -33,6 +33,47 @@ class SliderController extends Controller
                             })
                             ->addColumn('action', function(Slider $data) {
                                 return '<div class="action-list"><a href="' . route('admin-sl-edit',$data->id) . '"> <i class="fas fa-edit"></i>Edit</a><a href="javascript:;" data-href="' . route('admin-sl-delete',$data->id) . '" data-toggle="modal" data-target="#confirm-delete" class="delete"><i class="fas fa-trash-alt"></i></a></div>';
+                            }) 
+                            ->rawColumns(['photo', 'action'])
+                            ->toJson(); //--- Returning Json Data To Client Side
+    }
+
+    public function datatablesslideraproved()
+    {
+         $datas = Slider::orderBy('id','desc')->where([['addpy','=','2'],['satus','=' ,'1']])->get();
+         //--- Integrating This Collection Into Datatables
+         return Datatables::of($datas)
+                            ->editColumn('photo', function(Slider $data) {
+                                $photo = $data->photo ? url('assets/images/sliders/'.$data->photo):url('assets/images/noimage.png');
+                                return '<img src="' . $photo . '" alt="Image">';
+                            })
+                            ->editColumn('title', function(Slider $data) {
+                                $title = mb_strlen(strip_tags($data->title),'utf-8') > 250 ? mb_substr(strip_tags($data->title),0,250,'utf-8').'...' : strip_tags($data->title);
+                                return  $title;
+                            })
+                            ->addColumn('action', function(Slider $data) {
+                                return '<div class="action-list"><a href="' . route('admin-sl-edit',$data->id) . '"> <i class="fas fa-edit"></i>Edit</a><a href="javascript:;" data-href="'. route('admin-sl-delete',$data->id) . '" data-toggle="modal" data-target="#confirm-delete" class="delete"><i class="fas fa-trash-alt"></i></a></div>';
+                            }) 
+                            ->rawColumns(['photo', 'action'])
+                            ->toJson(); //--- Returning Json Data To Client Side
+    }
+
+
+    public function datatablesslidernotaproved()
+    {
+         $datas = Slider::orderBy('id','desc')->where([['addpy','=','2'],['satus','=' ,'0']])->get();
+         //--- Integrating This Collection Into Datatables
+         return Datatables::of($datas)
+                            ->editColumn('photo', function(Slider $data) {
+                                $photo = $data->photo ? url('assets/images/sliders/'.$data->photo):url('assets/images/noimage.png');
+                                return '<img src="' . $photo . '" alt="Image">';
+                            })
+                            ->editColumn('title', function(Slider $data) {
+                                $title = mb_strlen(strip_tags($data->title),'utf-8') > 250 ? mb_substr(strip_tags($data->title),0,250,'utf-8').'...' : strip_tags($data->title);
+                                return  $title;
+                            })
+                            ->addColumn('action', function(Slider $data) {
+                                return '<div class="action-list"><a href="' . route('admin-sl-edit',$data->id) . '"> <i class="fas fa-edit"></i>Edit</a><a href="javascript:;" data-href="'.route('admin-sl-aproved',$data->id) . '"data-toggle="modal" data-target="#confirm-aprove" class="delete"><i ></i>aproved</a><a href="javascript:;" data-href="' . route('admin-sl-delete',$data->id) . '" data-toggle="modal" data-target="#confirm-delete" class="delete"><i class="fas fa-trash-alt"></i></a></div>';
                             }) 
                             ->rawColumns(['photo', 'action'])
                             ->toJson(); //--- Returning Json Data To Client Side
@@ -74,6 +115,8 @@ class SliderController extends Controller
             $file->move('assets/images/sliders',$name);           
             $input['photo'] = $name;
         } 
+        $data->satus ='1';
+        $data->addpy ='1';
         $data->fill($input)->save();
         //--- Logic Section Ends
 
@@ -152,6 +195,15 @@ class SliderController extends Controller
         //--- Redirect Section Ends     
     }
 
+public function aproved($id)
+{
+    
+    $data = Slider::findOrFail($id);
+    $data->satus ='1';
+    $data->update();
+    $msg = 'Data Updated Successfully.';
+    return response()->json($msg);  
 
+}
     
 }

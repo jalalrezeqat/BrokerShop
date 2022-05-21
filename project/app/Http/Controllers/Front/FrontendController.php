@@ -134,7 +134,7 @@ class FrontendController extends Controller
  
         }
        $selectable = ['id','user_id','name','slug','features','colors','thumbnail','price','previous_price','attributes','size','size_price','discount_date'];
-       $sliders = DB::table('sliders')->get();
+       $sliders = DB::table('sliders')->where('satus','=','1')->get();
        $top_small_banners = DB::table('banners')->where('type','=','TopSmall')->get();
        $ps = DB::table('pagesettings')->find(1);
        $shops = DB::table('users')->where('is_vendor','=','2')->get();

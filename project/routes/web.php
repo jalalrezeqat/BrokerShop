@@ -545,10 +545,13 @@ Route::prefix('admin')->group(function() {
   //------------ ADMIN SLIDER SECTION ------------
 
   Route::get('/slider/datatables', 'Admin\SliderController@datatables')->name('admin-sl-datatables'); //JSON REQUEST
+  Route::get('/slider/datatablesslidernotaproved', 'Admin\SliderController@datatablesslidernotaproved')->name('admin-sl-datatablesslidernotaproved'); //JSON REQUEST
+  Route::get('/slider/datatablesslideraproved', 'Admin\SliderController@datatablesslideraproved')->name('admin-sl-datatablesslideraproved'); //JSON REQUEST
   Route::get('/slider', 'Admin\SliderController@index')->name('admin-sl-index');
   Route::get('/slider/create', 'Admin\SliderController@create')->name('admin-sl-create');
   Route::post('/slider/create', 'Admin\SliderController@store')->name('admin-sl-store');
   Route::get('/slider/edit/{id}', 'Admin\SliderController@edit')->name('admin-sl-edit');
+  Route::get('/slider/aproved/{id}', 'Admin\SliderController@aproved')->name('admin-sl-aproved');
   Route::post('/slider/edit/{id}', 'Admin\SliderController@update')->name('admin-sl-update');
   Route::get('/slider/delete/{id}', 'Admin\SliderController@destroy')->name('admin-sl-delete');
 
@@ -964,6 +967,7 @@ Route::prefix('user')->group(function() {
   Route::post('/slider/createvendor', 'Vendor\VendorController@storslide')->name('vendor-slider-store');
   Route::get('/slidervendor', 'vendor\SliderController@index')->name('vendor-sl-index');
   Route::get('/slidervendor/create', 'Vendor\VendorController@createslider')->name('vendor-sl-create');
+  Route::get('/slidervendor/creater', 'Vendor\VendorController@createsliderr')->name('vendor-sl-creater');
   Route::post('/slidervendor/store', 'Vendor\VendorController@storeslider')->name('vendor-sl-store-submit');
   Route::get('/slidervendor/edit/{id}', 'Vendor\VendorController@editslider')->name('vendor-sl-edit');
   Route::post('/slidervendor/edit/{id}', 'Vendor\VendorController@updateslider')->name('vendor-sl-update');

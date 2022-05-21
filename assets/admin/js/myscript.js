@@ -654,6 +654,92 @@ if(admin_loader == 1)
         return false;
       });
 
+      $('#confirm-aprove').on('show.bs.modal', function(e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
+
+    $('#confirm-aprove .btn-ok').on('click', function(e) {
+
+if(admin_loader == 1)
+{
+$('.submit-loader').show();
+}
+
+      $.ajax({
+       type:"GET",
+       url:$(this).attr('href'),
+       success:function(data)
+       {
+            $('#confirm-aprove').modal('toggle');
+            table.ajax.reload();
+            $('.alert-danger').hide();
+            $('.alert-success').show();
+            $('.alert-success p').html(data);
+
+
+      if(admin_loader == 1)
+        {
+          $('.submit-loader').hide();
+        }
+
+
+       }
+      });
+      return false;
+    });
+
+    $('#confirm-delete1 .btn-ok').on('click', function(e) {
+
+    if(admin_loader == 1)
+      {
+      $('.submit-loader').show();
+    }
+
+      $.ajax({
+       type:"GET",
+       url:$(this).attr('href'),
+       success:function(data)
+       {
+            $('#confirm-delete1').modal('toggle');
+            table.ajax.reload();
+            $('.alert-danger').hide();
+            $('.alert-success').show();
+            $('.alert-success p').html(data[0]);
+
+      if(admin_loader == 1)
+        {
+          $('.submit-loader').hide();
+        }
+
+
+       }
+      });
+
+      if($('#t-txt').length > 0)
+{
+
+    var tdata =  $('#t-txt').val();
+
+    if(tdata.length > 0) {
+
+      var id = $('#t-id').val();
+      var title = $('#t-title').val();
+      var text = $('#t-txt').val();
+      $.ajax({
+        url: $('#t-add').val(),
+        method: "GET",
+        data: { id : id, title: title, text : text }
+      });
+
+    }
+
+}
+
+
+
+
+      return false;
+    });
 
     $('#confirm-delete2 .btn-ok').on('click', function(e) {
 

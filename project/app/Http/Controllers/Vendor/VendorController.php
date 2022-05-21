@@ -19,10 +19,9 @@ use App\Models\Slider;
 
 
 
-
 class VendorController extends Controller
 {
-
+    public $pay=false;
     public $lang;
     public function __construct()
     {
@@ -384,15 +383,39 @@ class VendorController extends Controller
     {
         return view('vendor.slider.index');
     }
-
     //*** GET Request
+    // public function createsliderr(Request $request)
     public function createslider(Request $request)
     {
-       
+         $y= Auth::user();
+        $x=Auth::user()->statuspay;
+       if ($x==true)
+        {
+            $this->pay=true;
+            return view('vendor.slider.create');
+           
+        }
+        else
+        {
+            return redirect()->route('vendor-dashboard');
 
-        return view('vendor.slider.create');
+        }
        
     }
+
+    // public function createslider(Request $request)
+    // {
+    //     if($this->pay==true)
+    //     {
+    //         return view('vendor.slider.create');
+    //     }
+    //     else
+    //     {
+    //         return ('d');
+
+    //     }
+
+    // }
 
     //*** POST Request
     public function storeslider(Request $request)
@@ -419,6 +442,10 @@ class VendorController extends Controller
             $file->move('assets/images/sliders',$name);           
             $input['photo'] = $name;
         } 
+        $y= Auth::user();
+        $y->statuspay = '0';
+        $y->update();
+        $data->addpy = '2';
         $data->fill($input)->save();
         //--- Logic Section Ends
 

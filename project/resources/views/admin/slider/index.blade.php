@@ -29,15 +29,41 @@
                         @include('includes.admin.form-success')  
 
 										<div class="table-responsiv">
-												<table id="Bshoptable" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+											<h4>Slider by vendoer not aproved</h4>
+											<br>
+												<table id="Bshoptable2" class="table table-hover dt-responsive" cellspacing="0" width="100%">
 													<thead>
 														<tr>
-									                        <th>{{ __('Featured Image') }}</th>
-									                        <th width="40%">{{ __('Title') }}</th>
-									                        <th>{{ __('Options') }}</th>
+															<th>{{ __('Featured Image') }}</th>
+															<th width="40%">{{ __('Title') }}</th>
+															<th>{{ __('Options') }}</th>
 														</tr>
 													</thead>
 												</table>
+												<br>
+												<h4>Slider by vendoer  aproved</h4>
+												<br>
+												<table id="Bshoptable1" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+													<thead>
+														<tr>
+															<th>{{ __('Featured Image') }}</th>
+															<th width="40%">{{ __('Title') }}</th>
+															<th>{{ __('Options') }}</th>
+														</tr>
+													</thead>
+												</table>
+												<br>												
+													<h4>Slider by Admin</h4>
+													<br>
+													<table id="Bshoptable" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+														<thead>
+															<tr>
+																<th>{{ __('Featured Image') }}</th>
+																<th width="40%">{{ __('Title') }}</th>
+																<th>{{ __('Options') }}</th>
+															</tr>
+														</thead>
+													</table>
 										</div>
 									</div>
 								</div>
@@ -107,6 +133,38 @@
 
 {{-- DELETE MODAL ENDS --}}
 
+
+{{-- aprove MODAL --}}
+
+<div class="modal fade" id="confirm-aprove" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+  
+	  <div class="modal-header d-block text-center">
+		  <h4 class="modal-title d-inline-block">{{ __('Confirm Aprove') }}</h4>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+			  </button>
+	  </div>
+  
+		<!-- Modal body -->
+		<div class="modal-body">
+			  <p class="text-center">{{ __('You are about to aprove this Slider.') }}</p>
+			  <p class="text-center">{{ __('Do you want to proceed?') }}</p>
+		</div>
+  
+		<!-- Modal footer -->
+		<div class="modal-footer justify-content-center">
+			  <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('Cancel') }}</button>
+			  <a class="btn btn-success btn-ok">{{ __('Aprove') }}</a>
+		</div>
+  
+	  </div>
+	</div>
+  </div>
+  
+  {{-- aprove MODAL ENDS --}}
+
 @endsection    
 
 
@@ -144,6 +202,45 @@
 									
 
 {{-- DATA TABLE ENDS--}}
+
+
+var table = $('#Bshoptable1').DataTable({
+
+	   ordering: false,
+	   processing: true,
+	   serverSide: true,
+	   ajax: '{{ route('admin-sl-datatablesslideraproved') }}',
+	   columns: [
+				{ data: 'photo', name: 'photo' , searchable: false, orderable: false},
+				{ data: 'title_text', name: 'title_text' },
+				{ data: 'action', searchable: false, orderable: false },
+
+
+			 ],
+		language : {
+			processing: '<img src="{{asset('assets/images/'.$gs->admin_loader)}}">'
+		}
+	});
+//
+var table = $('#Bshoptable2').DataTable({
+
+ordering: false,
+processing: true,
+serverSide: true,
+ajax: '{{ route('admin-sl-datatablesslidernotaproved') }}',
+columns: [
+		 { data: 'photo', name: 'photo' , searchable: false, orderable: false},
+		 { data: 'title_text', name: 'title_text' },
+		 { data: 'action', searchable: false, orderable: false },
+
+
+	  ],
+ language : {
+	 processing: '<img src="{{asset('assets/images/'.$gs->admin_loader)}}">'
+ }
+});
+
+		
 
 </script>
 

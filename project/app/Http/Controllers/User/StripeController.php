@@ -26,7 +26,7 @@ use App\Http\Controllers\Controller;
 
 class StripeController extends Controller
 {
-
+    public $pay=false;
     public function __construct()
     {
         //Set Spripe Keys
@@ -81,7 +81,6 @@ class StripeController extends Controller
                     ]);
 
                 if ($charge['status'] == 'succeeded') {
-
                     $today = Carbon::now()->format('Y-m-d');
                     $date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
                     $input = $request->all();  
@@ -200,6 +199,16 @@ public function storeslid(Request $request){
                 ]);
 
             if ($charge['status'] == 'succeeded') {
+                //   $x= Subscription_slider::git('statuspay');
+                $x= Auth::user();
+                $x->statuspay = '1';
+                $x->update();
+                // if($x==false)
+                // {
+                //     $y['statuspay']='1';
+
+                // }
+                // $x->save($y);
 
                 $today = Carbon::now()->format('Y-m-d');
                 $date = date('Y-m-d', strtotime($today.' + '.$subss->days.' days'));
@@ -218,12 +227,12 @@ public function storeslid(Request $request){
                     }
                     else
                     {
-                        $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
+                        $user->date = date('Y-m-d', strtotime($today.' + '.$subss->days.' days'));
                     }
                 }
                 else
                 {
-                    $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
+                    $user->date = date('Y-m-d', strtotime($today.' + '.$subss->days.' days'));
                 }
                
                 $user->update($input);
@@ -269,7 +278,7 @@ public function storeslid(Request $request){
                 mail($user->email,'Your Vendor Account Activated','Your Vendor Account Activated Successfully. Please Login to your account and build your own shop.',$headers);
                 }
 
-                return redirect()->route('vendor-sl-create')->with('success','Vendor Account Activated Successfully');
+                return redirect()->route('vendor-sl-create',compact($x))->with('success','Vendor Account Activated Successfully');
 
             }
             

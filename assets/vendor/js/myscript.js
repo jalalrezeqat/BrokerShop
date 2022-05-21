@@ -266,7 +266,11 @@ function enablekey()
           table.ajax.reload();
         });
 
-
+        $(document).on('change','.data-droplinks',function (e) {
+          $('#confirm-aprove').modal('show');
+          $('#confirm-aprove').find('.btn-ok').attr('href', $(this).val());
+          table.ajax.reload();
+        });
   // Droplinks Ends
 
 
