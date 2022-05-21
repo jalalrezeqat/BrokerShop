@@ -242,8 +242,17 @@ class FrontendController extends Controller
            return false;
  
          });
-       
-       return view('front.extraindex',compact('ps','services','reviews','large_banners','bottom_small_banners','best_products','top_products','hot_products','latest_products','big_products','trending_products','sale_products','discount_products','partners'));
+         $products=Product::get()->reject(function($item){
+ 
+            if($item->user_id != 0){
+              if($item->user->is_vendor != 2){
+                return true;
+              }
+            }
+            return false;
+  
+          });
+       return view('front.extraindex',compact('products','ps','services','reviews','large_banners','bottom_small_banners','best_products','top_products','hot_products','latest_products','big_products','trending_products','sale_products','discount_products','partners'));
    }
  
 // -------------------------------- HOME PAGE SECTION ENDS ----------------------------------------

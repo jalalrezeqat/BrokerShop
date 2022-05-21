@@ -141,6 +141,7 @@
 
             <div class="product-price">
               <p class="title">{{ $langg->lang87 }} :</p>
+              
                     <p class="price"><span id="sizeprice">{{ $attrPrice != 0 ?  $gs->currency_format == 0 ? $curr->sign.$withSelectedAtrributePrice : $withSelectedAtrributePrice.$curr->sign :$productt->showPrice() }}</span>
                       <small><del>{{ $productt->showPreviousPrice() }}</del></small></p>
                       @if($productt->youtube != null)

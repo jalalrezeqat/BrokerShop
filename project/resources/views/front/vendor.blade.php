@@ -24,7 +24,6 @@
 <section class="info-area">
   <div class="container">
 
-
         @foreach($services->chunk(4) as $chunk)
 
         <div class="row">
