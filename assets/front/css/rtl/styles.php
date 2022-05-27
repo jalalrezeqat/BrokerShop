@@ -14,7 +14,7 @@ if(isset($_GET['footer_color']))
   $footer_color = '#'.$_GET['footer_color'];
 }
 else {
-  $footer_color = '#143250';
+  $footer_color = '#353535';
 }
 
 if(isset($_GET['copyright_color']))

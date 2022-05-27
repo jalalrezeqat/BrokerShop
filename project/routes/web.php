@@ -1114,7 +1114,11 @@ Route::prefix('vendor')->group(function() {
   //------------ VENDOR PRODUCT SECTION ------------
 
   Route::get('/products/datatables', 'Vendor\ProductController@datatables')->name('vendor-prod-datatables'); //JSON REQUEST
+  Route::get('/productsoutofstock/datatables', 'Vendor\ProductController@datatablesoutof')->name('vendor-prodout-datatables'); //JSON REQUEST
+
   Route::get('/products', 'Vendor\ProductController@index')->name('vendor-prod-index');
+  Route::get('/productsoutofstock', 'Vendor\ProductController@outofstock')->name('vendor-prod-outofstock');
+
 
   Route::post('/products/upload/update/{id}', 'Vendor\ProductController@uploadUpdate')->name('vendor-prod-upload-update');
 
@@ -1129,7 +1133,7 @@ Route::prefix('vendor')->group(function() {
   Route::post('/products/import-submit', 'Vendor\ProductController@importSubmit')->name('vendor-prod-importsubmit');
 
   Route::get('/products/catalog/datatables', 'Vendor\ProductController@catalogdatatables')->name('admin-vendor-catalog-datatables');
-  Route::get('/products/catalogs', 'Vendor\ProductController@catalogs')->name('admin-vendor-catalog-index');
+  // Route::get('/products/catalogs', 'Vendor\ProductController@catalogs')->name('admin-vendor-catalog-index');
 
   // CREATE SECTION
 

@@ -94,7 +94,7 @@
                                                       <div class="full-stars" style="width:{{App\Models\Rating::ratings($prod->id)}}%"></div>
                                                   </div>
 												</div>
-												<h4 class="price">{{ $attrPrice != 0 ?  $gs->currency_format == 0 ? $curr->sign.$withSelectedAtrributePrice : $withSelectedAtrributePrice.$curr->sign :$prod->showPrice() }}</h4>
+												<h4 class="price">{{ $prod->showPrice() }}</h4>
 														<h5 class="name">{{ $prod->showName() }}</h5>
 														<div class="item-cart-area">
 															@if($prod->product_type == "affiliate")

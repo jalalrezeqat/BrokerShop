@@ -153,12 +153,15 @@
 										<a href="{{ route('vendor-prod-index') }}"><span>{{ $langg->lang446 }}</span></a>
 									</li>
 									<li>
-										<a href="{{ route('admin-vendor-catalog-index') }}"><span>{{ $langg->lang785 }}</span></a>
+										<a href="{{ route('vendor-prod-outofstock') }}"><span>{{ $langg->lang446 }}</span></a>
 									</li>
+									{{-- <li>
+										<a href="{{ route('admin-vendor-catalog-index') }}"><span>{{ $langg->lang785 }}</span></a>
+									</li> --}}
 								</ul>
 							</li>
 
-							<li>
+							{{-- <li>
 								<a href="#affiliateprod" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
 									<i class="icofont-cart"></i>{{ $langg->lang447 }}
 								</a>
@@ -170,24 +173,24 @@
 										<a href="{{ route('vendor-import-index') }}"><span>{{ $langg->lang449 }}</span></a>
 									</li>
 								</ul>
-							</li>
+							</li>  --}}
 
 
-							<li>
+							{{-- <li>
 								<a href="{{ route('vendor-prod-import') }}"><i class="fas fa-upload"></i>{{ $langg->lang450 }}</a>
-							</li>
+							</li>--}}
 							<li>
 								<a href="{{ route('vendor-wt-index') }}" class=" wave-effect"><i class="fas fa-list"></i>{{ $langg->lang451 }}</a>
-							</li>
+							</li> 
 
 							<li>
 								<a href="#general" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
 									<i class="fas fa-cogs"></i>{{ $langg->lang452 }}
 								</a>
 								<ul class="collapse list-unstyled" id="general" data-parent="#accordion">
-                                    <li>
+                                    {{-- <li>
                                     	<a href="{{ route('vendor-service-index') }}"><span>{{ $langg->lang453 }}</span></a>
-                                    </li>
+                                    </li> --}}
                                     <li>
                                     	<a href="{{ route('vendor-banner') }}"><span>{{ $langg->lang454 }}</span></a>
                                     </li>

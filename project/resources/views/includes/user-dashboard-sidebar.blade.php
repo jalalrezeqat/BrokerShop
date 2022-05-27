@@ -42,19 +42,6 @@
                 </a>
               </li>
 
-              @if($gs->is_affilate == 1)
-
-                <li class="{{ $link == route('user-affilate-code') ? 'active':'' }}">
-                    <a href="{{ route('user-affilate-code') }}">{{ $langg->lang202 }}</a>
-                </li>
-
-                <li class="{{ $link == route('user-wwt-index') ? 'active':'' }}">
-                    <a href="{{route('user-wwt-index')}}">{{ $langg->lang203 }}</a>
-                </li>
-
-              @endif
-
-
               <li class="{{ $link == route('user-order-track') ? 'active':'' }}">
                   <a href="{{route('user-order-track')}}">{{ $langg->lang772 }}</a>
               </li>
@@ -63,17 +50,7 @@
                   <a href="{{route('user-favorites')}}">{{ $langg->lang231 }}</a>
               </li>
 
-              <li class="{{ $link == route('user-messages') ? 'active':'' }}">
-                  <a href="{{route('user-messages')}}">{{ $langg->lang232 }}</a>
-              </li>
-
-              <li class="{{ $link == route('user-message-index') ? 'active':'' }}">
-                  <a href="{{route('user-message-index')}}">{{ $langg->lang204 }}</a>
-              </li>
-
-              <li class="{{ $link == route('user-dmessage-index') ? 'active':'' }}">
-                  <a href="{{route('user-dmessage-index')}}">{{ $langg->lang250 }}</a>
-              </li>
+           
 
               <li class="{{ $link == route('user-profile') ? 'active':'' }}">
                 <a href="{{ route('user-profile') }}">

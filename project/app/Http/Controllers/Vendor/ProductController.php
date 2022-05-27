@@ -104,20 +104,58 @@ class ProductController extends Controller
                             })
                             ->rawColumns(['name', 'status', 'action'])
                             ->toJson(); //--- Returning Json Data To Client Side
+
+                            // 
+                            
     }
+    public function datatablesoutof()
+    {
+        $user = Auth::user();
+        $datas = $user->products()->where('size_qty','<','0','&&','stock','<','0')->orderBy('id','desc')->get();
+
+        //--- Integrating This Collection Into Datatables
+        return Datatables::of($datas)
+                           ->editColumn('name', function(Product $data) {
+                               $name = strlen(strip_tags($data->name)) > 50 ? substr(strip_tags($data->name),0,50).'...' : strip_tags($data->name);
+                               $id = '<small>Product ID: <a href="'.route('front.product', $data->slug).'" target="_blank">'.sprintf("%'.08d",$data->id).'</a></small>';
+                               return  $name.'<br>'.$id;
+                           })
+                           ->editColumn('price', function(Product $data) {
+                               $sign = Currency::where('is_default','=',1)->first();
+                               $price = round($data->price * $sign->value , 2);
+                               $price = $sign->sign.$price ;
+                               return  $price;
+                           })
+                           ->addColumn('status', function(Product $data) {
+                               $class = $data->status == 1 ? 'drop-success' : 'drop-danger';
+                               $s = $data->status == 1 ? 'selected' : '';
+                               $ns = $data->status == 0 ? 'selected' : '';
+                               return '<div class="action-list"><select class="process select droplinks '.$class.'"><option data-val="1" value="'. route('vendor-prod-status',['id1' => $data->id, 'id2' => 1]).'" '.$s.'>'.$this->vendor_language->lang713.'</option><<option data-val="0" value="'. route('vendor-prod-status',['id1' => $data->id, 'id2' => 0]).'" '.$ns.'>'.$this->vendor_language->lang714.'</option>/select></div>';
+                           })
+                           ->addColumn('action', function(Product $data) {
+                               return '<div class="action-list"><a href="' . route('vendor-prod-edit',$data->id) . '"> <i class="fas fa-edit"></i>'.$this->vendor_language->lang715.'</a><a href="javascript" class="set-gallery" data-toggle="modal" data-target="#setgallery"><input type="hidden" value="'.$data->id.'"><i class="fas fa-eye"></i> '.$this->vendor_language->lang716.'</a><a href="javascript:;" data-href="' . route('vendor-prod-delete',$data->id) . '" data-toggle="modal" data-target="#confirm-delete" class="delete"><i class="fas fa-trash-alt"></i></a></div>';
+                           })
+                           ->rawColumns(['name', 'status', 'action'])
+                           ->toJson(); //--- Returning Json Data To Client Side
+    }
+
 
     //*** GET Request
     public function index()
     {
         return view('vendor.product.index');
     }
+    public function outofstock()
+    {
+        return view('vendor.product.outofstock');
+    }
 
 
     //*** GET Request
-    public function catalogs()
-    {
-        return view('vendor.product.catalogs');
-    }
+    // public function catalogs()
+    // {
+    //     return view('vendor.product.catalogs');
+    // }
 
     //*** GET Request
     public function types()

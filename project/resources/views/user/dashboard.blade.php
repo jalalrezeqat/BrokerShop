@@ -57,26 +57,22 @@
             </div>
         
             <div class="col-lg-6">
-              <div class="user-profile-details h100">
-                <div class="account-info wallet h100">
                   <div class="header-area">
-                    <h4 class="title">
-                      {{ isset($langg->lang812) ? $langg->lang812 : 'My Balance' }}
-                    </h4>
-                  </div>
-                  <div class="edit-info-area">
-                  </div>
-                  <div class="main-info">
-                    <h3 class="title w-title">{{ $langg->lang215 }}:</h3>
-                    <h3 class="title w-price">{{ App\Models\Product::vendorConvertPrice($user->affilate_income) }}</h3>
-                  </div>
-                </div>
-              </div>
+                    <div class="card c-info-box-area">
+                      <div class="c-info-box box2">
+                        <p>{{ Auth::user()->orders()->where('status','completed')->count() }}</p>
+                      </div>
+                      <div class="c-info-box-content">
+                          <h6 class="title">{{ isset($langg->lang809) ? $langg->lang809 : 'Total Orders' }}</h6>
+                          <p class="text">{{ isset($langg->lang811) ? $langg->lang811 : 'All Time' }}</p>
+                      </div>
+                    </div>
+               
             </div>
         </div>
 
 
-        <div class="row row-cards-one mb-3">
+        {{-- <div class="row row-cards-one mb-3">
           <div class="col-md-6 col-xl-6">
             <div class="card c-info-box-area">
                 <div class="c-info-box box2">
@@ -87,7 +83,7 @@
                     <p class="text">{{ isset($langg->lang811) ? $langg->lang811 : 'All Time' }}</p>
                 </div>
             </div>
-          </div>
+          </div> --}}
           <div class="col-md-6 col-xl-6">
               <div class="card c-info-box-area">
                   <div class="c-info-box box1">
