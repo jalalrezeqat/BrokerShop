@@ -99,13 +99,13 @@
         <div class="col-md-12 col-lg-6 col-xl-4">
             <div class="mycard bg6">
                 <div class="left">
-                    <h5 class="title">{{ __('Total Posts!') }}</h5>
-                    <span class="number">{{count($blogs)}}</span>
-                    <a href="{{ route('admin-blog-index') }}" class="link">{{ __('View All') }}</a>
+                    <h5 class="title">{{ __('Out Of Stock') }}</h5>
+                    <span class="number">{{count($products->where('size_qty','<=','0','&&','stock','<=','0'))}}</span>
+                    <a href="{{ route('admin-prod-outofstock') }}" class="link">{{ __('View All') }}</a>
                 </div>
                 <div class="right d-flex align-self-center">
                     <div class="icon">
-                        <i class="icofont-newspaper"></i>
+                        <i class="icofont-cart"></i>
                     </div>
                 </div>
             </div>
@@ -257,10 +257,10 @@
                                                     <br>
                                                     {{ $data->subcategory->name }}
                                                     @endif
-                                                    @if(isset($data->childcategory))
+                                                    {{-- @if(isset($data->childcategory))
                                                     <br>
                                                     {{ $data->childcategory->name }}
-                                                    @endif
+                                                    @endif --}}
                                                 </td>
                                                 <td>{{ $data->type }}</td>
 
@@ -357,7 +357,7 @@
 
 
 
-    <div class="row row-cards-one">
+    {{-- <div class="row row-cards-one">
 
         <div class="col-md-6 col-lg-6 col-xl-6">
             <div class="card">
@@ -370,9 +370,9 @@
                 </div>
             </div>
 
-        </div>
+        </div> --}}
 
-        <div class="col-md-6 col-lg-6 col-xl-6">
+        {{-- <div class="col-md-6 col-lg-6 col-xl-6">
                 <div class="card">
                         <h5 class="card-header">{{ __('Most Used OS') }}</h5>
                         <div class="card-body">
@@ -383,7 +383,7 @@
                     </div>
         </div>
         
-    </div>
+    </div> --}}
 
 
 

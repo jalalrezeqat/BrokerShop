@@ -386,18 +386,21 @@
 							<button class="toggle-bar"><span class="fa fa-bars"></span></button>
 						</div>
 						<ul class="menu">
+							<li>
+								<a href="{{ route('front.shops') }}"><i class="nav-header"></i> {{ $langg->lang900 }}</a>
+							</li>
 							@if($gs->is_home == 1)
 							<li><a href="{{ route('front.index') }}">{{ $langg->lang17 }}</a></li>
 							@endif
 							@if (DB::table('pagesettings')->find(1)->review_blog==1)
 								<li class="active" ><a  href="{{ route('front.blog') }}">{{ $langg->lang18 }}</a></li>
 							@endif
-							{{-- @if($gs->is_faq == 1)
+							@if($gs->is_faq == 1)
 							<li><a href="{{ route('front.faq') }}">{{ $langg->lang19 }}</a></li>
-							@endif --}}
-							{{-- @foreach(DB::table('pages')->where('header','=',1)->get() as $data)
+							@endif 
+							 @foreach(DB::table('pages')->where('header','=',1)->get() as $data)
 								<li><a href="{{ route('front.page',$data->slug) }}">{{ $data->title }}</a></li>
-							@endforeach --}}
+							@endforeach
 							@if($gs->is_contact == 1)
 							<li><a href="{{ route('front.contact') }}">{{ $langg->lang20 }}</a></li>
 							@endif
@@ -413,6 +416,7 @@
 							<li>
 								<a href="{{ route('vendor-dashboard') }}"><i class="nav-header"></i> {{ $langg->lang222 }}</a>
 							</li>
+						
 							@endif
 							@endif
 
@@ -1080,7 +1084,7 @@
         recognition.interimResults = false;
        
        
-        recognition.lang = "en-EN";
+        recognition.lang = "ar-AR";
         recognition.start();
        
    

@@ -111,7 +111,7 @@ class ProductController extends Controller
     public function datatablesoutof()
     {
         $user = Auth::user();
-        $datas = $user->products()->where('size_qty','<','0','&&','stock','<','0')->orderBy('id','desc')->get();
+        $datas = $user->products()->where('stock','<=',0)->orWhereNull('size_qty')->orderBy('id','desc')->get();
 
         //--- Integrating This Collection Into Datatables
         return Datatables::of($datas)

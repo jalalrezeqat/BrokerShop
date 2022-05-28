@@ -97,7 +97,10 @@ Route::prefix('admin')->group(function() {
   Route::group(['middleware'=>'permissions:products'],function(){
 
   Route::get('/products/datatables', 'Admin\ProductController@datatables')->name('admin-prod-datatables'); //JSON REQUEST
+  Route::get('/outofstock/datatables', 'Admin\ProductController@datatablesoutofstock')->name('admin-prod-datatablesoutofstock'); //JSON REQUEST
   Route::get('/products', 'Admin\ProductController@index')->name('admin-prod-index');
+  Route::get('/productsoutofstock', 'Admin\ProductController@outofstock')->name('admin-prod-outofstock');
+
 
   Route::post('/products/upload/update/{id}', 'Admin\ProductController@uploadUpdate')->name('admin-prod-upload-update');
 
@@ -411,25 +414,25 @@ Route::prefix('admin')->group(function() {
 
   //------------ ADMIN BLOG SECTION ------------
 
-  Route::group(['middleware'=>'permissions:blog'],function(){
+  // Route::group(['middleware'=>'permissions:blog'],function(){
 
-  Route::get('/blog/datatables', 'Admin\BlogController@datatables')->name('admin-blog-datatables'); //JSON REQUEST
-  Route::get('/blog', 'Admin\BlogController@index')->name('admin-blog-index');
-  Route::get('/blog/create', 'Admin\BlogController@create')->name('admin-blog-create');
-  Route::post('/blog/create', 'Admin\BlogController@store')->name('admin-blog-store');
-  Route::get('/blog/edit/{id}', 'Admin\BlogController@edit')->name('admin-blog-edit');
-  Route::post('/blog/edit/{id}', 'Admin\BlogController@update')->name('admin-blog-update');
-  Route::get('/blog/delete/{id}', 'Admin\BlogController@destroy')->name('admin-blog-delete');
+  // Route::get('/blog/datatables', 'Admin\BlogController@datatables')->name('admin-blog-datatables'); //JSON REQUEST
+  // Route::get('/blog', 'Admin\BlogController@index')->name('admin-blog-index');
+  // Route::get('/blog/create', 'Admin\BlogController@create')->name('admin-blog-create');
+  // Route::post('/blog/create', 'Admin\BlogController@store')->name('admin-blog-store');
+  // Route::get('/blog/edit/{id}', 'Admin\BlogController@edit')->name('admin-blog-edit');
+  // Route::post('/blog/edit/{id}', 'Admin\BlogController@update')->name('admin-blog-update');
+  // Route::get('/blog/delete/{id}', 'Admin\BlogController@destroy')->name('admin-blog-delete');
 
-  Route::get('/blog/category/datatables', 'Admin\BlogCategoryController@datatables')->name('admin-cblog-datatables'); //JSON REQUEST
-  Route::get('/blog/category', 'Admin\BlogCategoryController@index')->name('admin-cblog-index');
-  Route::get('/blog/category/create', 'Admin\BlogCategoryController@create')->name('admin-cblog-create');
-  Route::post('/blog/category/create', 'Admin\BlogCategoryController@store')->name('admin-cblog-store');
-  Route::get('/blog/category/edit/{id}', 'Admin\BlogCategoryController@edit')->name('admin-cblog-edit');
-  Route::post('/blog/category/edit/{id}', 'Admin\BlogCategoryController@update')->name('admin-cblog-update');
-  Route::get('/blog/category/delete/{id}', 'Admin\BlogCategoryController@destroy')->name('admin-cblog-delete');
+  // Route::get('/blog/category/datatables', 'Admin\BlogCategoryController@datatables')->name('admin-cblog-datatables'); //JSON REQUEST
+  // Route::get('/blog/category', 'Admin\BlogCategoryController@index')->name('admin-cblog-index');
+  // Route::get('/blog/category/create', 'Admin\BlogCategoryController@create')->name('admin-cblog-create');
+  // Route::post('/blog/category/create', 'Admin\BlogCategoryController@store')->name('admin-cblog-store');
+  // Route::get('/blog/category/edit/{id}', 'Admin\BlogCategoryController@edit')->name('admin-cblog-edit');
+  // Route::post('/blog/category/edit/{id}', 'Admin\BlogCategoryController@update')->name('admin-cblog-update');
+  // Route::get('/blog/category/delete/{id}', 'Admin\BlogCategoryController@destroy')->name('admin-cblog-delete');
 
-  });
+  // });
 
   //------------ ADMIN BLOG SECTION ENDS ------------
 
@@ -1216,7 +1219,7 @@ Route::get('/package/delete/{id}', 'Vendor\PackageController@destroy')->name('ve
   Route::get('/banner', 'Vendor\VendorController@banner')->name('vendor-banner');
   Route::get('/slidervendor', 'Vendor\VendorController@slider')->name('vendor-slider');
   Route::get('/payslider', 'Vendor\VendorController@payslider')->name('vendor-payslider');
-  Route::post('/vendor-request', 'Vendor\VendorController@vendorslidsub')->name('user-vendor-request-submit');
+  Route::post('/vendor-requestslid', 'Vendor\VendorController@vendorslidsub')->name('user-vendor-requestslid-submit');
 
 
 
@@ -1255,18 +1258,20 @@ Route::get('/package/delete/{id}', 'Vendor\PackageController@destroy')->name('ve
   Route::get('/extras', 'Front\FrontendController@extraIndex')->name('front.extraIndex');
   Route::get('/currency/{id}', 'Front\FrontendController@currency')->name('front.currency');
   Route::get('/language/{id}', 'Front\FrontendController@language')->name('front.language');
+  Route::get('/shops','Front\FrontendController@shops')->name('front.shops');
 
   // BLOG SECTION
-  Route::get('/blog','Front\FrontendController@blog')->name('front.blog');
-  Route::get('/blog/{id}','Front\FrontendController@blogshow')->name('front.blogshow');
-  Route::get('/blog/category/{slug}','Front\FrontendController@blogcategory')->name('front.blogcategory');
-  Route::get('/blog/tag/{slug}','Front\FrontendController@blogtags')->name('front.blogtags');
-  Route::get('/blog-search','Front\FrontendController@blogsearch')->name('front.blogsearch');
-  Route::get('/blog/archive/{slug}','Front\FrontendController@blogarchive')->name('front.blogarchive');
+
+  // Route::get('/blog','Front\FrontendController@blog')->name('front.blog');
+  // Route::get('/blog/{id}','Front\FrontendController@blogshow')->name('front.blogshow');
+  // Route::get('/blog/category/{slug}','Front\FrontendController@blogcategory')->name('front.blogcategory');
+  // Route::get('/blog/tag/{slug}','Front\FrontendController@blogtags')->name('front.blogtags');
+  // Route::get('/blog-search','Front\FrontendController@blogsearch')->name('front.blogsearch');
+  // Route::get('/blog/archive/{slug}','Front\FrontendController@blogarchive')->name('front.blogarchive');
   // BLOG SECTION ENDS
 
   // FAQ SECTION
-  Route::get('/faq','Front\FrontendController@faq')->name('front.faq');
+  // Route::get('/faq','Front\FrontendController@faq')->name('front.faq');
   // FAQ SECTION ENDS
 
   // CONTACT SECTION
@@ -1403,6 +1408,7 @@ Route::get('/package/delete/{id}', 'Vendor\PackageController@destroy')->name('ve
 
   // PAGE SECTION
   Route::get('/{slug}','Front\FrontendController@page')->name('front.page');
+
   // PAGE SECTION ENDS
 
 // ************************************ FRONT SECTION ENDS**********************************************

@@ -71,6 +71,50 @@ class ProductController extends Controller
                             ->rawColumns(['name', 'status', 'action'])
                             ->toJson(); //--- Returning Json Data To Client Side
     }
+    // 
+    public function datatablesoutofstock()
+    {
+         $datas = Product::where('stock','<=',0)->orWhereNull('size_qty')->orderBy('id','desc')->get();
+
+         //--- Integrating This Collection Into Datatables
+         return Datatables::of($datas)
+                            ->editColumn('name', function(Product $data) {
+                                $name =  mb_strlen($data->name,'UTF-8') > 50 ? mb_substr($data->name,0,50,'UTF-8').'...' : $data->name;
+             
+                                $id = '<small>'.__("ID").': <a href="'.route('front.product', $data->slug).'" target="_blank">'.sprintf("%'.08d",$data->id).'</a></small>';
+
+                                $id3 = $data->type == 'Physical' ?'<small class="ml-2"> '.__("SKU").': <a href="'.route('front.product', $data->slug).'" target="_blank">'.$data->sku.'</a>' : '';
+
+                                return  $name.'<br>'.$id.$id3.$data->checkVendor();
+                            })
+                            ->editColumn('price', function(Product $data) {
+                                $sign = Currency::where('is_default','=',1)->first();
+                                $price = round($data->price * $sign->value , 2);
+                                $price = $sign->sign.$price ;
+                                return  $price;
+                            })
+                            ->editColumn('stock', function(Product $data) {
+                                $stck = (string)$data->stock;
+                                if($stck == "0")
+                                return "Out Of Stock";
+                                elseif($stck == null)
+                                return "Unlimited";
+                                else
+                                return $data->stock;
+                            })
+                            ->addColumn('status', function(Product $data) {
+                                $class = $data->status == 1 ? 'drop-success' : 'drop-danger';
+                                $s = $data->status == 1 ? 'selected' : '';
+                                $ns = $data->status == 0 ? 'selected' : '';
+                                return '<div class="action-list"><select class="process select droplinks '.$class.'"><option data-val="1" value="'. route('admin-prod-status',['id1' => $data->id, 'id2' => 1]).'" '.$s.'>Activated</option><<option data-val="0" value="'. route('admin-prod-status',['id1' => $data->id, 'id2' => 0]).'" '.$ns.'>Deactivated</option>/select></div>';
+                            })
+                            ->addColumn('action', function(Product $data) {
+                                $catalog = $data->type == 'Physical' ? ($data->is_catalog == 1 ? '<a href="javascript:;" data-href="' . route('admin-prod-catalog',['id1' => $data->id, 'id2' => 0]) . '" data-toggle="modal" data-target="#catalog-modal" class="delete"><i class="fas fa-trash-alt"></i> Remove Catalog</a>' : '<a href="javascript:;" data-href="'. route('admin-prod-catalog',['id1' => $data->id, 'id2' => 1]) .'" data-toggle="modal" data-target="#catalog-modal"> <i class="fas fa-plus"></i> Add To Catalog</a>') : '';
+                                return '<div class="godropdown"><button class="go-dropdown-toggle"> Actions<i class="fas fa-chevron-down"></i></button><div class="action-list"><a href="' . route('admin-prod-edit',$data->id) . '"> <i class="fas fa-edit"></i> Edit</a><a href="javascript" class="set-gallery" data-toggle="modal" data-target="#setgallery"><input type="hidden" value="'.$data->id.'"><i class="fas fa-eye"></i> View Gallery</a>'.$catalog.'<a data-href="' . route('admin-prod-feature',$data->id) . '" class="feature" data-toggle="modal" data-target="#modal2"> <i class="fas fa-star"></i> Highlight</a><a href="javascript:;" data-href="' . route('admin-prod-delete',$data->id) . '" data-toggle="modal" data-target="#confirm-delete" class="delete"><i class="fas fa-trash-alt"></i> Delete</a></div></div>';
+                            })
+                            ->rawColumns(['name', 'status', 'action'])
+                            ->toJson(); //--- Returning Json Data To Client Side
+    }
 
     //*** JSON Request
     public function deactivedatatables()
@@ -166,7 +210,10 @@ class ProductController extends Controller
     {
         return view('admin.product.index');
     }
-
+    public function outofstock()
+    {
+        return view('admin.product.outofstock');
+    }
     //*** GET Request
     public function deactive()
     {

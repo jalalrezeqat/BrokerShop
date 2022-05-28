@@ -160,15 +160,15 @@ class StripeController extends Controller
 // 
 // /////
 public function storeslid(Request $request){
-   $subs=session::get('vendor-slider');
+//    $subs=session::get('vendor-slider');
     $user = Auth::user();
-    $subss = Subscription_slider::findOrFail($request->subs_id);
+    $subs = Subscription_slider::findOrFail($request->subs_id);
     $settings = Generalsetting::findOrFail(1);
     $success_url = action('User\UserController@index');
-    $item_name = $subss->title." Plan";
+    $item_name = $subs->title." Plan";
     $item_number = Str::random(10);
-    $item_amount = $subss->price;
-    $item_currency = $subss->currency_code;
+    $item_amount = $subs->price;
+    $item_currency = $subs->currency_code;
     $validator = Validator::make($request->all(),[
                     'card' => 'required',
                     'cvv' => 'required',
@@ -211,7 +211,7 @@ public function storeslid(Request $request){
                 // $x->save($y);
 
                 $today = Carbon::now()->format('Y-m-d');
-                $date = date('Y-m-d', strtotime($today.' + '.$subss->days.' days'));
+                $date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
                 $input = $request->all();  
                 $user->is_vendor = 2;
                 if(!empty($package))
@@ -227,12 +227,12 @@ public function storeslid(Request $request){
                     }
                     else
                     {
-                        $user->date = date('Y-m-d', strtotime($today.' + '.$subss->days.' days'));
+                        $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
                     }
                 }
                 else
                 {
-                    $user->date = date('Y-m-d', strtotime($today.' + '.$subss->days.' days'));
+                    $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
                 }
                
                 $user->update($input);

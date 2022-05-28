@@ -33,13 +33,16 @@
             <li>
                 <a href="{{ route('admin-prod-deactive') }}"><span>{{ __('Deactivated Product') }}</span></a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-prod-catalog-index') }}"><span>{{ __('Product Catalogs') }}</span></a>
+            </li> --}}
+            <li>
+                <a href="{{ route('admin-prod-outofstock') }}"><span>{{ __('Out Of Stock') }}</span></a>
             </li>
         </ul>
     </li>
 
-    <li>
+    {{-- <li>
         <a href="#affiliateprod" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="icofont-cart"></i>{{ __('Affiliate Products') }}
         </a>
@@ -51,7 +54,7 @@
                 <a href="{{ route('admin-import-index') }}"><span>{{ __('All Affiliate Products') }}</span></a>
             </li>
         </ul>
-    </li>
+    </li> --}}
 
     <li>
         <a href="#menu3" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -61,12 +64,12 @@
             <li>
                 <a href="{{ route('admin-user-index') }}"><span>{{ __('Customers List') }}</span></a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-withdraw-index') }}"><span>{{ __('Withdraws') }}</span></a>
-            </li>
-            <li>
+            </li> --}}
+            {{-- <li>
                 <a href="{{ route('admin-user-image') }}"><span>{{ __('Customer Default Image') }}</span></a>
-            </li>
+            </li> --}}
         </ul>
     </li>
 
@@ -84,9 +87,9 @@
             <li>
                 <a href="{{ route('admin-vendor-subs') }}"><span>{{ __('Vendor Subscriptions') }}</span></a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-vendor-color') }}"><span>{{ __('Default Background') }}</span></a>
-            </li>
+            </li> --}}
 
         </ul>
     </li>
@@ -131,9 +134,9 @@
                 <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='subcategory') active @endif">
                     <a href="{{ route('admin-subcat-index') }}"><span>{{ __('Sub Category') }}</span></a>
                 </li>
-                <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='childcategory') active @endif">
+                {{-- <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='childcategory') active @endif">
                     <a href="{{ route('admin-childcat-index') }}"><span>{{ __('Child Category') }}</span></a>
-                </li>
+                </li> --}}
         </ul>
     </li>
 
@@ -161,7 +164,7 @@
     <li>
         <a href="{{ route('admin-coupon-index') }}" class=" wave-effect"><i class="fas fa-percentage"></i>{{ __('Set Coupons') }}</a>
     </li>
-    <li>
+    {{-- <li>
         <a href="#blog" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-fw fa-newspaper"></i>{{ __('Blog') }}
         </a>
@@ -173,7 +176,7 @@
                 <a href="{{ route('admin-blog-index') }}"><span>{{ __('Posts') }}</span></a>
             </li>
         </ul>
-    </li>
+    </li> --}}
 
     <li>
         <a href="#msg" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -247,9 +250,9 @@
             <li>
                 <a href="{{ route('admin-sl-index') }}"><span>{{ __('Sliders') }}</span></a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-service-index') }}"><span>{{ __('Services') }}</span></a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('admin-ps-best-seller') }}"><span>{{ __('Right Side Banner1') }}</span></a>
             </li>
@@ -260,9 +263,9 @@
                 <a href="{{ route('admin-sb-index') }}"><span>{{ __('Top Small Banners') }}</span></a>
             </li>
 
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-sb-large') }}"><span>{{ __('Large Banners') }}</span></a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('admin-sb-bottom') }}"><span>{{ __('Bottom Small Banners') }}</span></a>
             </li>
@@ -313,7 +316,7 @@
         </a>
         <ul class="collapse list-unstyled" id="payments" data-parent="#accordion">
             <li><a href="{{route('admin-gs-payments')}}"><span>{{__('Payment Information')}}</span></a></li>
-            <li><a href="{{route('admin-payment-index')}}"><span>{{ __('Payment Gateways') }}</span></a></li>
+            {{-- <li><a href="{{route('admin-payment-index')}}"><span>{{ __('Payment Gateways') }}</span></a></li> --}}
             <li><a href="{{route('admin-currency-index')}}"><span>{{ __('Currencies') }}</span></a></li>
         </ul>
     </li>
@@ -323,7 +326,7 @@
         </a>
         <ul class="collapse list-unstyled" id="socials" data-parent="#accordion">
                 <li><a href="{{route('admin-social-index')}}"><span>{{ __('Social Links') }}</span></a></li>
-                <li><a href="{{route('admin-social-facebook')}}"><span>{{ __('Facebook Login') }}</span></a></li>
+                {{-- <li><a href="{{route('admin-social-facebook')}}"><span>{{ __('Facebook Login') }}</span></a></li> --}}
                 <li><a href="{{route('admin-social-google')}}"><span>{{ __('Google Login') }}</span></a></li>
         </ul>
     </li>
@@ -337,7 +340,7 @@
 
         </ul>
     </li>
-    <li>
+    {{-- <li>
         <a href="#seoTools" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-wrench"></i>{{ __('SEO Tools') }}
         </a>
@@ -353,28 +356,28 @@
                 <a href="{{ route('admin-seotool-keywords') }}"><span>{{ __('Website Meta Keywords') }}</span></a>
             </li>
         </ul>
-    </li>
+    </li> --}}
     <li>
         <a href="{{ route('admin-staff-index') }}" class=" wave-effect"><i class="fas fa-user-secret"></i>{{ __('Manage Staffs') }}</a>
     </li>
 
-    <li>
+    {{-- <li>
         <a href="{{ route('admin-subs-index') }}" class=" wave-effect"><i class="fas fa-users-cog mr-2"></i>{{ __('Subscribers') }}</a>
-    </li>
+    </li> --}}
 
         <li>
             <a href="{{ route('admin-role-index') }}" class=" wave-effect"><i class="fas fa-user-tag"></i>{{ __('Manage Roles') }}</a>
         </li>
-        <li>
+        {{-- <li>
             <a href="{{ route('admin-cache-clear') }}" class=" wave-effect"><i class="fas fa-sync"></i>{{ __('Clear Cache') }}</a>
-        </li>
-        <li>
-            {{-- <a href="#sactive" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
+        </li> --}}
+        {{-- <li>
+            <a href="#sactive" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
                 <i class="fas fa-cog"></i>{{ __('System Activation') }}
-            </a> --}}
-            {{-- <ul class="collapse list-unstyled" id="sactive" data-parent="#accordion">
+            </a> 
+            <ul class="collapse list-unstyled" id="sactive" data-parent="#accordion">
 
                 <li><a href="{{route('admin-activation-form')}}"> {{ __('Activation') }}</a></li>
                 <li><a href="{{route('admin-generate-backup')}}"> {{ __('Generate Backup') }}</a></li>
-            </ul> --}}
-        </li>
+            </ul>
+        </li> --}}

@@ -704,13 +704,13 @@
 
                       </li>
 
-                      <li>
+                      {{-- <li>
 
                         <a  class="view-stor" href="javascript:;" data-toggle="modal" data-target="#comment-log-reg">
                           <i class="icofont-ui-chat"></i>
                           {{ $langg->lang81 }}
                         </a>
-                      </li>
+                      </li> --}}
 
                       @endif
 

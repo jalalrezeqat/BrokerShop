@@ -673,9 +673,16 @@ public function deleteDir($dirPath) {
    }
    rmdir($dirPath);
 }
- 
+
+
  
 // -------------------------------- PRINT SECTION ENDS ----------------------------------------
+public function shops(Request $request)
+   {
+    $shops = DB::table('users')->where('is_vendor','=','2')->get();
+
+       return view('front.shops',compact('shops'));
+   }
  
 }
  

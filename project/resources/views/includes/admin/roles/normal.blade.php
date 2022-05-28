@@ -51,7 +51,7 @@
 @endif
 
 
-@if(Auth::guard('admin')->user()->sectionCheck('affilate_products'))
+{{-- @if(Auth::guard('admin')->user()->sectionCheck('affilate_products'))
 
     <li>
         <a href="#affiliateprod" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -67,7 +67,7 @@
         </ul>
     </li>
 
-@endif
+@endif --}}
 
 
 @if(Auth::guard('admin')->user()->sectionCheck('customers'))

@@ -308,6 +308,9 @@ class VendorController extends Controller
 
     public function vendorrequestslid(Request $request)
     {
+        $x= Auth::user();
+        $x->statuspay = '1';
+        $x->update();
         //  //--- Validation Section
         //  $rules = [
         //     'photo'      => 'required|mimes:jpeg,jpg,png,svg',
