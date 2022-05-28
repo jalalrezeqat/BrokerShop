@@ -485,8 +485,8 @@
 
                                       @if($socialsetting->d_status == 1)
                                       <li>
-                                        <a href="{{ $socialsetting->dribble }}" class="dribbble" target="_blank">
-                                            <i class="fab fa-dribbble"></i>
+                                        <a href="{{ $socialsetting->dribble }}" class="instagram" target="_blank">
+                                            <i class="fab fa-instagram"></i>
                                         </a>
                                       </li>
                                       @endif

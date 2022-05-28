@@ -51,7 +51,7 @@
 							<div class="mr-breadcrumb">
 								<div class="row">
 									<div class="col-lg-12">
-											<h4 class="heading">{{ __('Sliders') }}</h4>
+											<h4 class="heading">{{ $langg->lang902 }}</h4>
 
 										<ul class="links">
 											<li>

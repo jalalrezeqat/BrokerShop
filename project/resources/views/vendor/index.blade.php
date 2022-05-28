@@ -77,7 +77,7 @@
                                 <div class="col-md-12 col-lg-6 col-xl-4">
                                     <div class="mycard bg4">
                                         <div class="left">
-                                            <h5 class="title">{{ 'out of stock' }}</h5>
+                                            <h5 class="title">{{$langg->lang901}}</h5>
                                             <span class="number">{{ count($user->products->where('size_qty','<=','0','&&','stock','<=','0')) }}</span>
                                             <a href="{{route('vendor-prod-outofstock')}}" class="link">{{ $langg->lang471 }}</a>
                                         </div>

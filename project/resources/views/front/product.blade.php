@@ -685,7 +685,7 @@
                         @endif
 
                       </li>
-
+{{-- 
                       <li>
                         <a  class="view-stor" href="javascript:;" data-toggle="modal" data-target="#vendorform1">
                           <i class="icofont-ui-chat"></i>
@@ -702,7 +702,7 @@
                         </a>
 
 
-                      </li>
+                      </li> --}}
 
                       {{-- <li>
 

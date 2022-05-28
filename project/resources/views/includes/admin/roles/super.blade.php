@@ -256,9 +256,9 @@
             <li>
                 <a href="{{ route('admin-ps-best-seller') }}"><span>{{ __('Right Side Banner1') }}</span></a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-ps-big-save') }}"><span>{{ __('Right Side Banner2') }}</span></a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('admin-sb-index') }}"><span>{{ __('Top Small Banners') }}</span></a>
             </li>
@@ -266,11 +266,11 @@
             {{-- <li>
                 <a href="{{ route('admin-sb-large') }}"><span>{{ __('Large Banners') }}</span></a>
             </li> --}}
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-sb-bottom') }}"><span>{{ __('Bottom Small Banners') }}</span></a>
-            </li>
+            </li> --}}
 
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-review-index') }}"><span>{{ __('Reviews') }}</span></a>
             </li>
             <li>
@@ -280,7 +280,7 @@
 
             <li>
                 <a href="{{ route('admin-ps-customize') }}"><span>{{ __('Home Page Customization') }}</span></a>
-            </li>
+            </li> --}}
         </ul>
     </li>
 
@@ -289,9 +289,9 @@
             <i class="fas fa-file-code"></i>{{ __('Menu Page Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="menu" data-parent="#accordion">
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-faq-index') }}"><span>{{ __('FAQ Page') }}</span></a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('admin-ps-contact') }}"><span>{{ __('Contact Us Page') }}</span></a>
             </li>

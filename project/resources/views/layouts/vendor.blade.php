@@ -153,7 +153,7 @@
 										<a href="{{ route('vendor-prod-index') }}"><span>{{ $langg->lang446 }}</span></a>
 									</li>
 									<li>
-										<a href="{{ route('vendor-prod-outofstock') }}"><span>{{ $langg->lang446 }}</span></a>
+										<a href="{{ route('vendor-prod-outofstock') }}"><span>{{ $langg->lang901 }}</span></a>
 									</li>
 									{{-- <li>
 										<a href="{{ route('admin-vendor-catalog-index') }}"><span>{{ $langg->lang785 }}</span></a>
@@ -195,7 +195,7 @@
                                     	<a href="{{ route('vendor-banner') }}"><span>{{ $langg->lang454 }}</span></a>
                                     </li>
 									<li>
-                                    	<a href="{{ route('vendor.detailsslider') }}"><span>{{ __('Sliders') }}</span></a>
+                                    	<a href="{{ route('vendor.detailsslider') }}"><span>{{ __($langg->lang902) }}</span></a>
                                     </li> 
 									
                                     {{-- @if($gs->vendor_ship_info == 1)

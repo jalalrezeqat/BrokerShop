@@ -15,7 +15,7 @@
 												<a href="javascript:;">{{ $langg->lang444 }} </a>
 											</li>
 											<li>
-												<a href="{{ route('vendor-prod-outofstock') }}">{{ 'Out Of Stock' }}</a>
+												<a href="{{ route('vendor-prod-outofstock') }}">{{ $langg->lang901 }}</a>
 											</li>
 										</ul>
 								</div>
