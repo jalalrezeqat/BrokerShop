@@ -74,7 +74,7 @@ class ProductController extends Controller
     // 
     public function datatablesoutofstock()
     {
-         $datas = Product::where('stock','<=',0)->orWhereNull('size_qty')->orderBy('id','desc')->get();
+         $datas = Product::where('stock','<=',0)->orWhereNull('stock')->WhereNull('size_qty')->orwhere('size_qty','=',0)->orderBy('id','desc')->get();
 
          //--- Integrating This Collection Into Datatables
          return Datatables::of($datas)

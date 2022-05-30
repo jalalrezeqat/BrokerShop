@@ -188,8 +188,8 @@
 
                                       @if(App\Models\Socialsetting::find(1)->d_status == 1)
                                       <li>
-                                        <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" class="dribbble" target="_blank">
-                                            <i class="fab fa-dribbble"></i>
+                                        <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" class="instagram" target="_blank">
+                                            <i class="fab fa-instagram"></i>
                                         </a>
                                       </li>
                                       @endif

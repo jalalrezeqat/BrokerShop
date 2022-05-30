@@ -1396,6 +1396,19 @@ textarea.input-field {
                                   </div>
                                 </div>
 
+                                <div class="lang-area">
+                                  <span class="remove lang-remove"><i class="fas fa-times"></i></span>
+                                  <div class="row">
+                                    <div class="col-lg-6">
+                                      <textarea name="keys[]" class="input-field" placeholder="Enter Language Key" required="">Vendor Subscription Plan Slider</textarea>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                      <textarea  name="values[]" class="input-field" placeholder="Enter Language Value" required="">Vendor Subscription Plan Slider</textarea>
+                                    </div>
+                                  </div>
+                                </div>
+
                               
                                 <div class="lang-area">
                                   <span class="remove lang-remove"><i class="fas fa-times"></i></span>
@@ -1437,6 +1450,8 @@ textarea.input-field {
                                     </div>
                                   </div>
                                 </div>
+
+                                
 
                                 
 

@@ -114,7 +114,7 @@
     </li>
     
     <li>
-        <a href="{{ route('admin-subscriptionslider-index') }}" class=" wave-effect"><i class="fas fa-dollar-sign"></i>{{ __('Vendor Subscription Plans slider') }}</a>
+        <a href="{{ route('admin-subscriptionslider-index') }}" class=" wave-effect"><i class="fas fa-dollar-sign"></i>{{ __('Vendor Subscription Plan Slider') }}</a>
     </li>
 
 
@@ -230,14 +230,14 @@
             </li> --}}
 
 
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-gs-error-banner') }}"><span>{{ __('Error Banner') }}</span></a>
-            </li>
+            </li> --}}
 
 
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-gs-maintenance') }}"><span>{{ __('Website Maintenance') }}</span></a>
-            </li>
+            </li> --}}
 
         </ul>
     </li>
@@ -300,7 +300,7 @@
             </li>
         </ul>
     </li>
-    <li>
+    {{-- <li>
         <a href="#emails" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-at"></i>{{ __('Email Settings') }}
         </a>
@@ -309,7 +309,7 @@
             <li><a href="{{route('admin-mail-config')}}"><span>{{ __('Email Configurations') }}</span></a></li>
             <li><a href="{{route('admin-group-show')}}"><span>{{ __('Group Email') }}</span></a></li>
         </ul>
-    </li>
+    </li> --}}
     <li>
         <a href="#payments" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-code"></i>{{ __('Payment Settings') }}
@@ -321,9 +321,9 @@
         </ul>
     </li>
     <li>
-        <a href="#socials" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
+        {{-- <a href="#socials" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-paper-plane"></i>{{ __('Social Settings') }}
-        </a>
+        </a> --}}
         <ul class="collapse list-unstyled" id="socials" data-parent="#accordion">
                 <li><a href="{{route('admin-social-index')}}"><span>{{ __('Social Links') }}</span></a></li>
                 {{-- <li><a href="{{route('admin-social-facebook')}}"><span>{{ __('Facebook Login') }}</span></a></li> --}}

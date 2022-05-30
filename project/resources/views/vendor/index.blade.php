@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="col-md-12 col-lg-6 col-xl-4">
-                                    <div class="mycard bg4">
+                                    <div class="mycard bg4"> 
                                         <div class="left">
                                             <h5 class="title">{{ $langg->lang468 }}</h5>
                                             <span class="number">{{ count($user->products) }}</span>
@@ -78,7 +78,7 @@
                                     <div class="mycard bg4">
                                         <div class="left">
                                             <h5 class="title">{{$langg->lang901}}</h5>
-                                            <span class="number">{{ count($user->products->where('size_qty','<=','0','&&','stock','<=','0')) }}</span>
+                                            <span class="number">{{ count($user->products->where('stock',0)) }}</span>
                                             <a href="{{route('vendor-prod-outofstock')}}" class="link">{{ $langg->lang471 }}</a>
                                         </div>
                                         <div class="right d-flex align-self-center">
