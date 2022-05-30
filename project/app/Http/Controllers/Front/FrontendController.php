@@ -240,9 +240,9 @@ class FrontendController extends Controller
              }
            }
            return false;
- 
+           
          });
-         $products=Product::get()->reject(function($item){
+         $products=Product::inRandomOrder()->take(32)->get()->reject(function($item){
  
             if($item->user_id != 0){
               if($item->user->is_vendor != 2){

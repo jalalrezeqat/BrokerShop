@@ -251,14 +251,14 @@
 						<div class="accessories-slider">
 							<div class="slide-item">
 								<div class="row">
-									<div class="col-lg-3 col-sm-6">
-										<div class="categori">
-											<div class="section-top">
+									{{-- <div class="col-lg-3 col-sm-6">
+										<div class="categori"> --}}
+											{{-- <div class="section-top">
 												<h2 class="section-title">
 													{{ $langg->lang30 }}
 												</h2>
-											</div>
-											<div class="hot-and-new-item-slider">
+											</div> --}}
+											{{-- <div class="hot-and-new-item-slider">
 												@foreach($hot_products->chunk(3) as $chunk)
 													<div class="item-slide">
 														<ul class="item-list">
@@ -268,10 +268,10 @@
 														</ul>
 			 										</div>
 												@endforeach
-											</div>
-
+											</div> --}}
+{{-- 
 										</div>
-									</div>
+									</div> --}}
 									<div class="col-lg-3 col-sm-6">
 										<div class="categori">
 											<div class="section-top">

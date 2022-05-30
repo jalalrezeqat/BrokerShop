@@ -93,7 +93,7 @@
 
         </ul>
     </li>
-
+{{-- 
     <li>
         <a href="#vendor1" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
                 <i class="icofont-verification-check"></i>{{ __('Vendor Verifications') }}
@@ -106,7 +106,7 @@
                 <a href="{{ route('admin-vr-pending') }}"><span>{{ __('Pending Verifications') }}</span></a>
             </li>
         </ul>
-    </li>
+    </li> --}}
 
 
     <li>
@@ -177,7 +177,7 @@
             </li>
         </ul>
     </li> --}}
-
+{{-- 
     <li>
         <a href="#msg" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-fw fa-newspaper"></i>{{ __('Messages') }}
@@ -190,7 +190,7 @@
                 <a href="{{ route('admin-message-dispute') }}"><span>{{ __('Disputes') }}</span></a>
             </li>
         </ul>
-    </li>
+    </li> --}}
 
     <li>
         <a href="#general" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">

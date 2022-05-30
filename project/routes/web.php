@@ -908,7 +908,7 @@ Route::group(['middleware'=>'permissions:super'],function(){
 Route::prefix('user')->group(function() {
 
   // User Dashboard
-  Route::get('/dashbord', 'User\UserController@index')->name('user-dashboard');
+  Route::get('/dashboard', 'User\UserController@index')->name('user-dashboard');
 
   // User Login
   Route::get('/login', 'User\LoginController@showLoginForm')->name('user.login');
