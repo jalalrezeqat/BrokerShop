@@ -15,7 +15,7 @@
 												<a href="javascript:;">{{ __("Products") }} </a>
 											</li>
 											<li>
-												<a href="{{ route('admin-prod-outofstock') }}">{{ __("All Products") }}</a>
+												<a href="{{ route('admin-prod-outofstock') }}">{{ __("Out Of Stock") }}</a>
 											</li>
 										</ul>
 								</div>

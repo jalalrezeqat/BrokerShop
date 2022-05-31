@@ -99,7 +99,7 @@
         <div class="col-md-12 col-lg-6 col-xl-4">
             <div class="mycard bg6">
                 <div class="left">
-                    <h5 class="title">{{ __('Out Of Stock') }}</h5>
+                    <h5 class="title">{{ 'Out Of Stock'}}</h5>
                     <span class="number">{{count($products->where('size_qty','<=','0','&&','stock','<=','0'))}}</span>
                     <a href="{{ route('admin-prod-outofstock') }}" class="link">{{ __('View All') }}</a>
                 </div>

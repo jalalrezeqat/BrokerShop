@@ -29,7 +29,8 @@
                         @include('includes.admin.form-success')  
 
 										<div class="table-responsiv">
-											<h4>Slider by vendoer not aproved</h4>
+											<h4 class="heading">{{ __('Slider by vendor not approved') }}</h4>
+
 											<br>
 												<table id="Bshoptable2" class="table table-hover dt-responsive" cellspacing="0" width="100%">
 													<thead>
@@ -41,7 +42,8 @@
 													</thead>
 												</table>
 												<br>
-												<h4>Slider by vendoer  aproved</h4>
+												<h4 class="heading">{{ __('Slider by vendor approved') }}</h4>
+
 												<br>
 												<table id="Bshoptable1" class="table table-hover dt-responsive" cellspacing="0" width="100%">
 													<thead>
@@ -52,8 +54,9 @@
 														</tr>
 													</thead>
 												</table>
-												<br>												
-													<h4>Slider by Admin</h4>
+												<br>		
+												<h4 class="heading">{{ __('Slider by Admin') }}</h4>
+										
 													<br>
 													<table id="Bshoptable" class="table table-hover dt-responsive" cellspacing="0" width="100%">
 														<thead>
